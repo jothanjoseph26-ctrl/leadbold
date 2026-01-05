@@ -4,21 +4,21 @@ import { ArrowDown } from 'lucide-react';
 
 const slides = [
   {
-    image: 'media/slider1.jpg',
+    image: 'media/sliders1.jpg',
     year: '2026',
     heading: 'LEADBOLD',
     subheading: 'Where Leaders Are Forged',
     text: "An Institutional Platform for Leadership Excellence."
   },
   {
-    image: 'media/slider2.jpg',
+    image: 'media/sliders.jpg',
     year: '2026',
     heading: 'LEADBOLD',
     subheading: 'Institutional Excellence',
     text: "Building the foundations for national transformation."
   },
   {
-    image: 'media/slider3.jpg',
+    image: 'media/sliders3.jpg',
     year: '2026',
     heading: 'LEADBOLD',
     subheading: 'Strategic Advisory',

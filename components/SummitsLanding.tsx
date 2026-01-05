@@ -35,7 +35,7 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
       {/* 1. POWER ENTRANCE HERO */}
       <section className="relative h-screen w-full bg-[#0A1628] flex items-center justify-center text-center px-6 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">
-           <img src="https://images.unsplash.com/photo-1540575861501-7c90b707a27d?auto=format&fit=crop&w=1920&q=80" className="w-full h-full object-cover" alt="Davos Background" />
+           <img src="media/brochure.jpg" className="w-full h-full object-cover" alt="LeadBold Summit Background" />
            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#0A1628]/80 to-transparent" />
         </div>
         <div className="absolute inset-0 noise-bg opacity-[0.08]" />
@@ -245,14 +245,14 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
 
             <div className="grid md:grid-cols-3 gap-8 aspect-video border border-white/5 p-4 bg-[#050505]/40 brochure-shadow">
                <div className="col-span-2 bg-black relative overflow-hidden group">
-                  <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60" alt="Summit Moments" />
+                  <img src="media/LOGO-LEADBOLD-thumbnail.png" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60" alt="LeadBold Logo" />
                   <div className="absolute inset-0 bg-[#0A1628]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                      <button className="w-20 h-20 bg-[#C9A962] rounded-full flex items-center justify-center text-[#050505] brochure-shadow scale-110 hover:scale-125 transition-transform"><Play fill="currentColor" /></button>
                   </div>
                </div>
                <div className="grid grid-rows-2 gap-8">
-                  <div className="bg-black overflow-hidden"><img src="https://images.unsplash.com/photo-1540575861501-7c90b707a27d" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-60 hover:opacity-100" alt="Summit Moments" /></div>
-                  <div className="bg-black overflow-hidden"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-60 hover:opacity-100" alt="Summit Moments" /></div>
+                  <div className="bg-black overflow-hidden"><img src="media/company.jpg" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-60 hover:opacity-100" alt="LeadBold Office" /></div>
+                  <div className="bg-black overflow-hidden"><img src="media/brochure.jpg" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-60 hover:opacity-100" alt="LeadBold Events" /></div>
                </div>
             </div>
          </div>

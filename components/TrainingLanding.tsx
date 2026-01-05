@@ -75,7 +75,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
         </div>
         <div className="hidden lg:flex lg:w-[40%] relative bg-[#050505] border-l border-white/10 overflow-hidden items-center justify-center p-20 pt-48">
            <div className="relative group cursor-pointer w-full aspect-[4/5]">
-              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" />
+              <img src="media/company.jpg" className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 right-10 bg-[#D4AF37] p-8 brochure-shadow translate-y-12 group-hover:translate-y-0 transition-transform duration-700">
                  <Quote className="w-8 h-8 text-[#050505]/20 mb-4" />
@@ -162,7 +162,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
             <div className="grid lg:grid-cols-2 gap-10">
                {flagships.map(course => (
                  <div key={course.id} className="group relative bg-[#050505] overflow-hidden min-h-[600px] flex flex-col justify-end p-12 lg:p-20 hover:-translate-y-2 transition-all duration-700 brochure-shadow">
-                    <div className="absolute inset-0 z-0"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80" className="w-full h-full object-cover grayscale opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000" /><div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" /></div>
+                    <div className="absolute inset-0 z-0"><img src="media/brochure.jpg" className="w-full h-full object-cover grayscale opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000" /><div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" /></div>
                     <div className="relative z-10 space-y-8">
                        <div className="flex items-center gap-4"><Award className="w-10 h-10 text-[#D4AF37]" /><span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Flagship Program</span></div>
                        <div className="space-y-4"><h3 className="text-4xl lg:text-5xl serif text-white leading-tight font-bold">{course.title}</h3><p className="text-xl text-[#D4AF37] font-light italic serif">"{course.subtitle || 'Equipping leaders for modern complexity.'}"</p></div>

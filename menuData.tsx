@@ -24,22 +24,24 @@ export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
       }))
     },
     navigation2: {
-      header: 'INSTITUTIONAL STRATEGY',
+      header: 'UPCOMING PROGRAMS',
       links: [
-        { title: 'Governance Advisory', description: 'Board effectiveness and leadership pipelines.', href: 'view:consulting' },
-        { title: 'Institutional Reform', description: 'Policy design and systemic performance.', href: 'view:consulting' },
-        { title: 'Public Sector Audit', description: 'Efficiency and accountability frameworks.', href: 'view:consulting' }
+        { title: 'Leading Successful Organizational Change', description: 'Master change management and transformation.', href: 'view:training' },
+        { title: 'Women Leadership Development', description: 'Empower women leaders for excellence.', href: 'view:training' },
+        { title: 'Strategic Leadership', description: 'Lead with vision and strategic thinking.', href: 'view:training' },
+        { title: 'Leading High-performance Organizations', description: 'Drive high performance in organizations.', href: 'view:training' },
+        { title: 'Developing Leadership Presence', description: 'Build commanding leadership presence.', href: 'view:training' }
       ],
       footerCta: {
-        label: 'VIEW ALL CONSULTING SERVICES',
-        href: 'view:consulting'
+        label: 'VIEW TRAINING CATALOGUE',
+        href: 'view:training'
       }
     },
     featured: {
       type: 'case-study',
       title: 'Transforming Tax Administration',
       subtitle: 'CASE STUDY',
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=400&q=250',
+      image: 'media/company.jpg',
       description: '"LeadBold helped us increase revenue collection by 47% while improving satisfaction."',
       cta: 'Read Full Case Study'
     },

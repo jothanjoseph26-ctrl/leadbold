@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PROGRAMS, COLORS } from '@/constants';
+import { ALL_COURSES, COLORS } from '@/constants';
 import { ArrowRight } from 'lucide-react';
 
 const ProgramShowcase: React.FC = () => {
@@ -17,17 +17,12 @@ const ProgramShowcase: React.FC = () => {
       </div>
 
       <div className="flex gap-8 px-6 md:px-32 overflow-x-auto no-scrollbar pb-12 snap-x snap-mandatory">
-        {PROGRAMS.map((program) => (
+        {ALL_COURSES.slice(0, 6).map((program) => (
           <div 
             key={program.id}
             className="flex-none w-[300px] md:w-[450px] group cursor-pointer snap-start"
           >
-            <div className="relative aspect-[16/10] overflow-hidden mb-6">
-              <img 
-                src={program.image} 
-                alt={program.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-              />
+            <div className="relative aspect-[16/10] overflow-hidden mb-6 bg-gradient-to-br from-[#D4AF37] to-[#B8860B]">
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
               <div className="absolute top-4 right-4 bg-[#D4AF37] text-[#050505] px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
                 {program.duration}
