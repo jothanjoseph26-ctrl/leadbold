@@ -40,7 +40,8 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>('home');
   const [activeCourse, setActiveCourse] = useState<DetailedCourse | null>(null);
   const [activeSummit, setActiveSummit] = useState<Summit | null>(null);
-  
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
   // Core State
   const [personnel, setPersonnel] = useState<Personnel[]>(INITIAL_PERSONNEL);
   const [courses, setCourses] = useState<DetailedCourse[]>(ALL_COURSES);
@@ -101,9 +102,21 @@ const App: React.FC = () => {
 
   const toggleBookmark = (courseId: string) => {
     const id = courseId.toString();
-    setBookmarks(prev => 
+    setBookmarks(prev =>
       prev.includes(id) ? prev.filter(bId => bId !== id) : [...prev, id]
     );
+  };
+
+  const handleAdminAccess = () => {
+    const adminPassword = process.env.VITE_ADMIN_PASSWORD || 'leadbold2026';
+    const enteredPassword = prompt('Enter Admin Password:');
+
+    if (enteredPassword === adminPassword) {
+      setIsAdminAuthenticated(true);
+      setCurrentView('admin');
+    } else if (enteredPassword !== null) {
+      alert('Incorrect password. Access denied.');
+    }
   };
 
   const updateCourse = async (updated: DetailedCourse) => {
@@ -271,7 +284,7 @@ const App: React.FC = () => {
           onSearchOpen={() => setIsSearchOpen(true)} 
           onSavedOpen={() => setIsSavedOpen(true)}
           bookmarkCount={bookmarks.length} 
-          onAdminClick={() => setCurrentView('admin')}
+          onAdminClick={handleAdminAccess}
           onViewChange={handleViewChange}
         />
       )}
@@ -374,13 +387,16 @@ const App: React.FC = () => {
         />
       )}
 
-      {currentView === 'admin' && (
+      {currentView === 'admin' && isAdminAuthenticated && (
         <AdminDashboard 
           courses={courses}
           summits={summits}
           insights={insights}
           personnel={personnel}
-          onExit={() => setCurrentView('home')}
+          onExit={() => {
+            setIsAdminAuthenticated(false);
+            setCurrentView('home');
+          }}
           onUpdateCourse={updateCourse}
           onAddCourse={addCourse}
           onDeleteCourse={deleteCourse}

@@ -13,16 +13,30 @@ interface NavbarProps {
   onViewChange: (view: any) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ 
-  onSearchOpen, 
-  onSavedOpen, 
-  onAdminClick, 
+const Navbar: React.FC<NavbarProps> = ({
+  onSearchOpen,
+  onSavedOpen,
+  onAdminClick,
   bookmarkCount = 0,
   onViewChange
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const [adminClicks, setAdminClicks] = useState(0);
+  const [showAdminAccess, setShowAdminAccess] = useState(showAdminButton);
   const hoverTimeoutRef = useRef<number | null>(null);
+
+  const handleLogoClick = () => {
+    setAdminClicks(prev => {
+      const newCount = prev + 1;
+      if (newCount >= 5) {
+        setShowAdminAccess(true);
+        setAdminClicks(0);
+        return 0;
+      }
+      return newCount;
+    });
+  };
 
   const navItems = [
     { label: 'Consulting', id: 'consulting' },
@@ -55,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({
         onMouseLeave={handleMouseLeave}
       >
         <div className="max-w-[1400px] mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center space-x-2 cursor-pointer group" onClick={() => onViewChange('home')}>
+          <div className="flex items-center space-x-2 cursor-pointer group" onClick={() => { handleLogoClick(); onViewChange('home'); }}>
             <div className="w-10 h-10 border-2 border-[#D4AF37] flex items-center justify-center font-bold text-[#D4AF37] text-xl serif group-hover:bg-[#D4AF37] group-hover:text-[#050505] transition-all">LB</div>
             <div className="flex flex-col -space-y-1">
               <span className="text-white text-2xl font-bold tracking-tight serif hidden sm:block">LEADBOLD</span>
@@ -79,9 +93,11 @@ const Navbar: React.FC<NavbarProps> = ({
 
           <div className="flex items-center space-x-3 lg:space-x-6">
             <div className="hidden xl:flex items-center space-x-6 text-white/50 text-xs uppercase tracking-widest font-bold">
-              <button onClick={onAdminClick} className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
-                <Shield className="w-4 h-4" /> Admin
-              </button>
+              {showAdminAccess && (
+                <button onClick={onAdminClick} className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
+                  <Shield className="w-4 h-4" /> Admin
+                </button>
+              )}
               <button 
                 onClick={onSavedOpen}
                 className="relative group cursor-pointer hover:text-[#D4AF37] transition-colors flex items-center gap-2"
