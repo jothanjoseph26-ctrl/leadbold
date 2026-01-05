@@ -4,6 +4,7 @@ import { ShieldCheck, GraduationCap, Presentation, BookOpen, Info, Zap } from 'l
 import { MegaMenuContent } from './types';
 import { FLAGSHIP_SUMMITS } from './constants';
 import { CONSULTING_SERVICES } from './src/constants';
+import { ALL_COURSES } from './src/constants';
 
 export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
   consulting: {
@@ -25,13 +26,11 @@ export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
     },
     navigation2: {
       header: 'UPCOMING PROGRAMS',
-      links: [
-        { title: 'Leading Successful Organizational Change', description: 'Master change management and transformation.', href: 'view:training' },
-        { title: 'Women Leadership Development', description: 'Empower women leaders for excellence.', href: 'view:training' },
-        { title: 'Strategic Leadership', description: 'Lead with vision and strategic thinking.', href: 'view:training' },
-        { title: 'Leading High-performance Organizations', description: 'Drive high performance in organizations.', href: 'view:training' },
-        { title: 'Developing Leadership Presence', description: 'Build commanding leadership presence.', href: 'view:training' }
-      ],
+      links: ALL_COURSES.slice(0, 5).map(course => ({
+        title: course.title,
+        description: course.description.substring(0, 60) + '...',
+        href: 'view:training'
+      })),
       footerCta: {
         label: 'VIEW TRAINING CATALOGUE',
         href: 'view:training'

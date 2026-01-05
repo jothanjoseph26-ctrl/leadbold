@@ -1,9 +1,14 @@
 
 import React from 'react';
 import { ALL_COURSES, COLORS } from '@/constants';
+import { DetailedCourse } from '@/types';
 import { ArrowRight } from 'lucide-react';
 
-const ProgramShowcase: React.FC = () => {
+interface ProgramShowcaseProps {
+  courses?: DetailedCourse[];
+}
+
+const ProgramShowcase: React.FC<ProgramShowcaseProps> = ({ courses = ALL_COURSES }) => {
   return (
     <section id="schools" className="py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -17,7 +22,7 @@ const ProgramShowcase: React.FC = () => {
       </div>
 
       <div className="flex gap-8 px-6 md:px-32 overflow-x-auto no-scrollbar pb-12 snap-x snap-mandatory">
-        {ALL_COURSES.slice(0, 6).map((program) => (
+        {courses.slice(0, 6).map((program) => (
           <div 
             key={program.id}
             className="flex-none w-[300px] md:w-[450px] group cursor-pointer snap-start"

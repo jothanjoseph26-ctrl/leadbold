@@ -2,14 +2,16 @@
 import React from 'react';
 import { MapPin, Users, Calendar, ArrowRight } from 'lucide-react';
 import { COLORS, FLAGSHIP_SUMMITS } from '@/constants';
+import { Summit } from '@/types';
 
 interface SummitFeatureProps {
   onViewAll?: () => void;
   onViewFeatured?: (id: string) => void;
+  summits?: Summit[];
 }
 
-const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured }) => {
-  const featured = FLAGSHIP_SUMMITS[0]; // ANPELS
+const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured, summits = FLAGSHIP_SUMMITS }) => {
+  const featured = summits[0]; // ANPELS
 
   return (
     <section id="summits" className="py-32 bg-[#FAFAF9]">

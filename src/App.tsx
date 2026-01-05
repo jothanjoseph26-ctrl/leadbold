@@ -292,10 +292,11 @@ const App: React.FC = () => {
           <ValueProp />
           <Pillars />
           <Metrics />
-          <ProgramShowcase />
-          <SummitFeature 
-            onViewAll={() => setCurrentView('summits')} 
+          <ProgramShowcase courses={courses} />
+          <SummitFeature
+            onViewAll={() => setCurrentView('summits')}
             onViewFeatured={(id: string) => handleViewChange(`summit:${id}`)}
+            summits={summits}
           />
           <Testimonials />
           <Partners />
