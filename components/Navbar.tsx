@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [adminClicks, setAdminClicks] = useState(0);
-  const [showAdminAccess, setShowAdminAccess] = useState(showAdminButton);
+  const [showAdminAccess, setShowAdminAccess] = useState(false);
   const hoverTimeoutRef = useRef<number | null>(null);
 
   const handleLogoClick = () => {
