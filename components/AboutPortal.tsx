@@ -72,7 +72,7 @@ const AboutPortal: React.FC<AboutPortalProps> = ({ currentSubView, personnel, on
           </div>
         </div>
         <div className="relative group">
-           <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" className="w-full aspect-[4/5] object-cover grayscale brochure-shadow group-hover:grayscale-0 transition-all duration-1000" alt="Institutional logic" />
+           <img src="/company.jpg" className="w-full aspect-[4/5] object-cover grayscale brochure-shadow group-hover:grayscale-0 transition-all duration-1000" alt="Institutional logic" />
            <div className="absolute inset-0 bg-[#D4AF37]/10" />
         </div>
       </section>

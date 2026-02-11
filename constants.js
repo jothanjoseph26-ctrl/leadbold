@@ -16,7 +16,7 @@ export const FLAGSHIP_SUMMITS = [
     venue: 'Eko Hotel & Suites',
     theme: 'Building Ethical Leadership for Public Service Excellence',
     description: 'The premier continental convening for public sector leaders focusing on ethical governance and systemic reform.',
-    image: 'https://images.unsplash.com/photo-1540575861501-7c90b707a27d',
+    image: '/company.jpg',
     capacity: '300 Leaders',
     attendees: '300+',
     speakerIds: ['p-3', 'p-1'],
@@ -89,6 +89,6 @@ export const ARTICLES = [
     excerpt: 'Accountability frameworks.',
     author: 'LeadBold Research',
     readTime: '12 min',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80'
+    image: '/company.jpg'
   }
 ];

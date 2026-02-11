@@ -387,7 +387,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
                       </div>
                    </div>
                    <div className="relative group">
-                      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952" className="w-full aspect-[4/5] object-cover brochure-shadow grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                      <img src="/company.jpg" className="w-full aspect-[4/5] object-cover brochure-shadow grayscale group-hover:grayscale-0 transition-all duration-1000" />
                       <div className="absolute inset-0 bg-[#0A1628]/20" />
                       <div className="absolute -bottom-10 -left-10 bg-[#D4AF37] p-10 brochure-shadow max-w-xs space-y-4">
                          <h5 className="font-black uppercase tracking-widest text-[10px]">Cohort Connection</h5>

@@ -79,7 +79,7 @@ export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
       type: 'program',
       title: 'Executive Leadership Lab',
       subtitle: 'FEATURED PROGRAM',
-      image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=400&q=250',
+      image: '/company.jpg',
       description: 'A 6-month immersive journey for C-suite leaders.',
       cta: 'Apply Now'
     },
@@ -162,7 +162,7 @@ export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
       type: 'case-study',
       title: 'The Digital Sovereignty Report',
       subtitle: 'LATEST INSIGHT',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=250',
+      image: '/company.jpg',
       description: 'A comprehensive study on Africa\'s digital future and governance.',
       cta: 'Download PDF'
     },

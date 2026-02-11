@@ -1932,7 +1932,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Political and Economic Leadership Excellence',
     description: 'The premier national convening for political and economic leaders focusing on governance, policy development, and economic transformation for national development.',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '500 Leaders',
     attendees: '500+',
     speakerIds: ['p-1', 'p-2', 'p-3'],
@@ -1952,7 +1952,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Executive Leadership and Good Governance',
     description: 'Focused on executive leadership development and good governance practices for sustainable institutional development and public service excellence.',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80',
+    image: '/download.jpeg',
     capacity: '400 Leaders',
     attendees: '400+',
     speakerIds: ['p-2', 'p-3', 'p-1'],
@@ -1972,7 +1972,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'International Public Procurement Excellence',
     description: 'International summit on public procurement excellence, transparency, and anti-corruption measures in public sector procurement processes.',
-    image: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?auto=format&fit=crop&w=800&q=80',
+    image: '/download-3Y-1.jpg',
     capacity: '300 Leaders',
     attendees: '300+',
     speakerIds: ['p-3', 'p-1', 'p-2'],
@@ -1992,7 +1992,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Oil and Gas International Leadership',
     description: 'International summit for oil and gas industry leaders focusing on leadership, innovation, and sustainable energy development.',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '350 Leaders',
     attendees: '350+',
     speakerIds: ['p-1', 'p-3', 'p-2'],
@@ -2012,7 +2012,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'African Political and Economic Leadership',
     description: 'Continental summit for African political and economic leaders to address development challenges and foster pan-African cooperation.',
-    image: 'https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '600 Leaders',
     attendees: '600+',
     speakerIds: ['p-2', 'p-1', 'p-3'],
@@ -2032,7 +2032,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'International Anti-corruption Leadership',
     description: 'Global summit on anti-corruption leadership, integrity systems, and ethical governance for sustainable development.',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '400 Leaders',
     attendees: '400+',
     speakerIds: ['p-3', 'p-2', 'p-1'],
@@ -2052,7 +2052,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Women International Leadership and Governance',
     description: 'International summit celebrating women leadership and governance, promoting gender equality and women empowerment in leadership roles.',
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '450 Leaders',
     attendees: '450+',
     speakerIds: ['p-1', 'p-3', 'p-2'],
@@ -2072,7 +2072,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Young Adults International Leadership',
     description: 'International summit for young adults focusing on leadership development, innovation, and future-ready skills for the next generation of leaders.',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '300 Leaders',
     attendees: '300+',
     speakerIds: ['p-2', 'p-1', 'p-3'],
@@ -2092,11 +2092,11 @@ export const PILLARS = [
 ];
 
 export const PROGRAMS: Program[] = [
-  { id: 'p1', title: 'Leadership Intelligence', category: 'Executive', duration: '6 Months', image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80', description: 'Mastering systemic leadership.' }
+  { id: 'p1', title: 'Leadership Intelligence', category: 'Executive', duration: '6 Months',   image: '/company.jpg', description: 'Mastering systemic leadership.' }
 ];
 
 export const ARTICLES: Article[] = [
-  { id: 'a1', title: 'Financial Intelligence in Institutions', category: 'Policy Brief', excerpt: 'Accountability frameworks.', author: 'LeadBold Research', readTime: '12 min', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80' }
+  { id: 'a1', title: 'Financial Intelligence in Institutions', category: 'Policy Brief', excerpt: 'Accountability frameworks.', author: 'LeadBold Research', readTime: '12 min',   image: '/company.jpg' }
 ];
 
 export const TESTIMONIALS = [
