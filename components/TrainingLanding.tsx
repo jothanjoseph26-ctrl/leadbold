@@ -75,7 +75,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
         </div>
         <div className="hidden lg:flex lg:w-[40%] relative bg-[#050505] border-l border-white/10 overflow-hidden items-center justify-center p-20 pt-48">
            <div className="relative group cursor-pointer w-full aspect-[4/5]">
-              <img src="media/company.jpg" className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" />
+              <img src="/company.jpg" className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
               <div className="absolute bottom-10 left-10 right-10 bg-[#D4AF37] p-8 brochure-shadow translate-y-12 group-hover:translate-y-0 transition-transform duration-700">
                  <Quote className="w-8 h-8 text-[#050505]/20 mb-4" />
@@ -162,7 +162,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
             <div className="grid lg:grid-cols-2 gap-10">
                {flagships.map(course => (
                  <div key={course.id} className="group relative bg-[#050505] overflow-hidden min-h-[600px] flex flex-col justify-end p-12 lg:p-20 hover:-translate-y-2 transition-all duration-700 brochure-shadow">
-                    <div className="absolute inset-0 z-0"><img src="media/brochure.jpg" className="w-full h-full object-cover grayscale opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000" /><div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" /></div>
+                    <div className="absolute inset-0 z-0"><img src="/brochure.jpg" className="w-full h-full object-cover grayscale opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-1000" /><div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" /></div>
                     <div className="relative z-10 space-y-8">
                        <div className="flex items-center gap-4"><Award className="w-10 h-10 text-[#D4AF37]" /><span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Flagship Program</span></div>
                        <div className="space-y-4"><h3 className="text-4xl lg:text-5xl serif text-white leading-tight font-bold">{course.title}</h3><p className="text-xl text-[#D4AF37] font-light italic serif">"{course.subtitle || 'Equipping leaders for modern complexity.'}"</p></div>
@@ -248,7 +248,7 @@ const TrainingLanding: React.FC<TrainingLandingProps> = ({
               <div className="grid lg:grid-cols-2 gap-20 items-start">
                 <div className="space-y-12">
                    <div className="aspect-[4/3] relative overflow-hidden brochure-shadow rounded-sm group">
-                      <img src="https://leadboldconsulting.co.uk/wp-content/uploads/2023/09/company.jpg" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Executive Classroom" />
+                      <img src="/company.jpg" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Executive Classroom" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/40 to-transparent" />
                       <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center gap-4">
                          <div className="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center text-[#050505] cursor-pointer hover:scale-110 transition-transform"><Play className="fill-current w-5 h-5 ml-1" /></div>

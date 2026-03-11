@@ -192,11 +192,60 @@ const AboutPortal: React.FC<AboutPortalProps> = ({ currentSubView, personnel, on
 
   /* Added missing render functions for About portal sub-views */
   const renderPartnerships = () => (
-    <div className="animate-fade-in space-y-12 text-center py-20">
-       <div className="p-16 bg-white border border-slate-100 brochure-shadow inline-block">
+    <div className="animate-fade-in space-y-12 py-20">
+       <div className="text-center mb-16">
           <Network className="w-16 h-16 text-[#D4AF37] mx-auto mb-8" />
           <h2 className="text-4xl serif font-bold text-[#050505] mb-4">Strategic Partnerships</h2>
-          <p className="text-slate-500 max-w-lg mx-auto">We collaborate with global institutions to bridge the leadership gap. Information on our partnership models will be available shortly.</p>
+          <p className="text-slate-500 max-w-2xl mx-auto">We collaborate with global institutions to bridge the leadership gap across Africa and beyond.</p>
+       </div>
+       
+       {/* Featured Partnership - NNPC */}
+       <div className="max-w-6xl mx-auto bg-white border border-slate-100 brochure-shadow p-10 lg:p-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+             <div>
+                <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-[10px] font-bold mb-4">Featured Case Study</p>
+                <h3 className="text-3xl serif font-bold text-[#050505] mb-4">Nigerian National Petroleum Company (NNPC)</h3>
+                <p className="text-slate-500 mb-6">Multi-year partnership delivering executive leadership and technical certification programs for Africa's premier energy company.</p>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                   <div className="text-center p-4 bg-slate-50">
+                      <div className="text-3xl font-bold text-[#D4AF37]">4.7/5</div>
+                      <p className="text-xs text-slate-400 uppercase">Satisfaction</p>
+                   </div>
+                   <div className="text-center p-4 bg-slate-50">
+                      <div className="text-3xl font-bold text-[#D4AF37]">100%</div>
+                      <p className="text-xs text-slate-400 uppercase">Would Recommend</p>
+                   </div>
+                </div>
+                <button 
+                  onClick={() => onViewChange('case-study')}
+                  className="px-8 py-3 bg-[#D4AF37] text-[#050505] text-xs uppercase tracking-widest font-bold hover:brightness-110 transition-all"
+                >
+                   View Full Case Study
+                </button>
+             </div>
+             <div className="bg-slate-100 aspect-[4/3] flex items-center justify-center">
+                <div className="text-center text-slate-400">
+                   <Building2 className="w-16 h-16 mx-auto mb-4" />
+                   <p className="text-sm">NNPC E&P Limited</p>
+                </div>
+             </div>
+          </div>
+       </div>
+
+       {/* Other Partnerships Grid */}
+       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mt-16">
+          <div className="p-8 bg-white border border-slate-100">
+             <h4 className="font-bold text-[#050505] mb-2">Government Institutions</h4>
+             <p className="text-sm text-slate-500">Public sector reform and governance programs for African governments.</p>
+          </div>
+          <div className="p-8 bg-white border border-slate-100">
+             <h4 className="font-bold text-[#050505] mb-2">International Organizations</h4>
+             <p className="text-sm text-slate-500">Partnerships with global development institutions and Think Tanks.</p>
+          </div>
+          <div className="p-8 bg-white border border-slate-100">
+             <h4 className="font-bold text-[#050505] mb-2">Corporate Clients</h4>
+             <p className="text-sm text-slate-500">Leadership development and technical training for Fortune 500 companies.</p>
+          </div>
        </div>
     </div>
   );

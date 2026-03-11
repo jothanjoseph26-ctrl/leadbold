@@ -40,7 +40,7 @@ export const MEGA_MENU_DATA: Record<string, MegaMenuContent> = {
       type: 'case-study',
       title: 'Transforming Tax Administration',
       subtitle: 'CASE STUDY',
-      image: 'media/company.jpg',
+      image: '/company.jpg',
       description: '"LeadBold helped us increase revenue collection by 47% while improving satisfaction."',
       cta: 'Read Full Case Study'
     },

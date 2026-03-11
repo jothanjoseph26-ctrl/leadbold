@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import NNPCHeroWidget from './components/NNPCHeroWidget';
 import TrustBar from './components/TrustBar';
 import ValueProp from './components/ValueProp';
 import Pillars from './components/Pillars';
@@ -27,12 +28,14 @@ import SummitSinglePage from './components/SummitSinglePage';
 import ConsultingLanding from './components/ConsultingLanding';
 import MediaStudio from './components/MediaStudio';
 import AboutPortal from './components/AboutPortal';
+import CaseStudy from './components/CaseStudy';
+import TestimonialsPage from './components/TestimonialsPage';
 import { DetailedCourse, ALL_COURSES, FLAGSHIP_SUMMITS, ARTICLES, INITIAL_PERSONNEL } from './constants';
 import { Summit, Article, Personnel } from './types';
 import { supabase } from './lib/supabase';
 import { Loader2 } from 'lucide-react';
 
-export type AppView = 'home' | 'training' | 'single-course' | 'enrollment' | 'admin' | 'summits' | 'single-summit' | 'consulting' | 'media-studio' | 'about-main' | 'about-story' | 'about-vision' | 'about-philosophy' | 'about-leadership' | 'about-partnerships' | 'about-careers' | 'about-press' | 'about-reports';
+export type AppView = 'home' | 'training' | 'single-course' | 'enrollment' | 'admin' | 'summits' | 'single-summit' | 'consulting' | 'media-studio' | 'about-main' | 'about-story' | 'about-vision' | 'about-philosophy' | 'about-leadership' | 'about-partnerships' | 'about-careers' | 'about-press' | 'about-reports' | 'case-study' | 'testimonials';
 
 const App: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -187,7 +190,9 @@ const App: React.FC = () => {
         'schools': 'training',
         'summits': 'summits',
         'insights': 'home', // or a dedicated insights view if created
-        'consulting': 'consulting'
+        'consulting': 'consulting',
+        'case-study': 'case-study',
+        'testimonials': 'testimonials'
       };
       
       setCurrentView(viewMap[view] || (view as AppView));
@@ -232,23 +237,24 @@ const App: React.FC = () => {
       
       {currentView === 'home' && (
         <main>
-          <Hero />
+          <Hero onViewChange={handleViewChange} />
+          <NNPCHeroWidget />
           <TrustBar />
           <ValueProp />
           <Pillars />
           <Metrics />
-          <ProgramShowcase />
+          <ProgramShowcase onViewAll={() => setCurrentView('training')} onViewCourse={handleViewCourse} />
           <SummitFeature 
             onViewAll={() => setCurrentView('summits')} 
             onViewFeatured={(id) => handleViewChange(`summit:${id}`)}
           />
-          <Testimonials />
+          <Testimonials onViewChange={handleViewChange} />
           <Partners />
           <Insights articles={insights} />
           <Methodology />
           <Reach />
           <Engagement />
-          <ClosingCTA />
+          <ClosingCTA onViewChange={handleViewChange} />
         </main>
       )}
 
@@ -304,6 +310,14 @@ const App: React.FC = () => {
 
       {currentView === 'consulting' && (
         <ConsultingLanding onBack={() => setCurrentView('home')} />
+      )}
+
+      {currentView === 'case-study' && (
+        <CaseStudy onBack={() => setCurrentView('home')} />
+      )}
+
+      {currentView === 'testimonials' && (
+        <TestimonialsPage onBack={() => setCurrentView('home')} />
       )}
 
       {currentView === 'media-studio' && (

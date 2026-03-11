@@ -109,7 +109,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         venue: 'TBD',
         theme: '',
         description: '',
-        image: 'https://images.unsplash.com/photo-1540575861501-7c90b707a27d',
+        image: '/company.jpg',
         capacity: '0 Leaders',
         attendees: '0 Expected',
         speakerIds: [],

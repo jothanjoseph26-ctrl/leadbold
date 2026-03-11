@@ -7,15 +7,30 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onSearchOpen: () => void;
+  onViewChange: (view: string) => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen, onViewChange }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
   const toggleSection = (id: string) => {
     setExpandedSection(expandedSection === id ? null : id);
+  };
+
+  const handleLinkClick = (href: string) => {
+    if (href.startsWith('view:') || href.startsWith('summit:') || href.startsWith('course:')) {
+      onViewChange(href.startsWith('view:') ? href.split(':')[1] : href);
+      onClose();
+      return;
+    }
+
+    if (href.startsWith('#')) {
+      onClose();
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const navItems = Object.values(MEGA_MENU_DATA);
@@ -71,7 +86,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
                       </h4>
                       <div className="space-y-4">
                         {item.navigation1.links.map((link, i) => (
-                          <a key={i} href={link.href} className="block group" onClick={onClose}>
+                          <button key={i} className="block group text-left w-full" onClick={() => handleLinkClick(link.href)}>
                             <div className="flex items-center justify-between mb-1">
                               <span className="text-white font-medium">{link.title}</span>
                               {link.badge && (
@@ -81,7 +96,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
                               )}
                             </div>
                             {link.description && <p className="text-white/30 text-xs">{link.description}</p>}
-                          </a>
+                          </button>
                         ))}
                       </div>
                     </div>
@@ -92,9 +107,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
                       </h4>
                       <div className="space-y-4">
                         {item.navigation2.links.map((link, i) => (
-                          <a key={i} href={link.href} className="block group" onClick={onClose}>
+                          <button key={i} className="block group text-left w-full" onClick={() => handleLinkClick(link.href)}>
                             <span className="text-white font-medium">{link.title}</span>
-                          </a>
+                          </button>
                         ))}
                       </div>
                     </div>
@@ -107,7 +122,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
                     </h5>
                     <div className="space-y-2">
                       <p className="text-white font-serif text-lg leading-tight">{item.featured.title}</p>
-                      <button className="flex items-center gap-2 text-[#C9A962] text-[10px] uppercase font-bold">
+                      <button onClick={() => onViewChange(item.id === 'about' ? 'about-story' : item.id)} className="flex items-center gap-2 text-[#C9A962] text-[10px] uppercase font-bold">
                         {item.featured.cta} <ArrowUpRight className="w-3 h-3" />
                       </button>
                     </div>
@@ -121,10 +136,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
         {/* Utility Links */}
         <div className="px-6 py-8 border-t border-white/10 space-y-6">
           <div className="grid grid-cols-2 gap-4">
-            <a href="#partners" className="text-white/60 uppercase tracking-widest text-xs font-bold py-4 px-6 border border-white/10 flex items-center justify-between" onClick={onClose}>
+            <button className="text-white/60 uppercase tracking-widest text-xs font-bold py-4 px-6 border border-white/10 flex items-center justify-between text-left" onClick={() => handleLinkClick('#partners')}>
               Partners <ArrowRight className="w-4 h-4 text-[#C9A962]" />
-            </a>
-            <a href="#" className="text-white/60 uppercase tracking-widest text-xs font-bold py-4 px-6 border border-white/10 flex items-center justify-between" onClick={onClose}>
+            </button>
+            <a href="mailto:info@leadboldconsulting.co.uk?subject=LeadBold%20Inquiry" className="text-white/60 uppercase tracking-widest text-xs font-bold py-4 px-6 border border-white/10 flex items-center justify-between" onClick={onClose}>
               Contact <ArrowRight className="w-4 h-4 text-[#C9A962]" />
             </a>
           </div>
@@ -139,7 +154,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onSearchOpen }
 
       {/* Fixed Bottom Action */}
       <div className="relative z-20 p-6 bg-[#0A1628] border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-        <button className="w-full py-5 bg-[#C9A962] text-[#0A1628] font-bold uppercase tracking-[0.2em] text-xs shadow-lg shadow-[#C9A962]/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+        <button onClick={() => { onViewChange('training'); onClose(); }} className="w-full py-5 bg-[#C9A962] text-[#0A1628] font-bold uppercase tracking-[0.2em] text-xs shadow-lg shadow-[#C9A962]/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
           Apply Now
         </button>
       </div>

@@ -2104,3 +2104,47 @@ export const TESTIMONIALS = [
   { quote: "ANPELS 2025 changed how I approach stakeholder engagement. Implementable results within 3 months.", author: "Chinedu Okafor, PhD", title: "Director-General", org: "National Planning Commission", type: "Written" },
   { quote: "LeadBold convenings are the gold standard for African leadership dialogue.", author: "Sarah M.", title: "CEO", org: "East Africa Trade", type: "Written" }
 ];
+
+export const NNPC_CASE_STUDY = {
+  id: 'nnpc-geomechanics-2026',
+  client: 'NNPC E&P Limited (NEPL)',
+  program: 'Geomechanics & Pore Pressure Certification Training',
+  location: 'Accra, Ghana',
+  dates: 'February 9–13, 2026',
+  participants: 13,
+  overallRating: 4.7,
+  wouldRecommend: 100,
+  exceededExpectations: 69,
+  handsOnRating: 92,
+  testimonials: [
+    { id: 1, name: 'Babangida Saleh', title: 'Production Planning', company: 'NNPC – NEPL', rating: 5, quote: "Facilitators' explanation is excellent, complimenting real-time drilling simulation... Practical modelling and group discussions added massive value.", featured: true },
+    { id: 2, name: 'Engr. Akinremi Michael O. (FNSE)', title: 'Lead Production Planning', company: 'NEPL', rating: 5, quote: "The great facilitators made all the training relevant to my job. The program is well packaged.", featured: true },
+    { id: 3, name: 'Engr. Wilfred Igbinovia', title: 'Production Technologist, WRFM', company: 'NNPC E&P Limited', rating: 5, quote: "I had a faint idea about geomechanics before this training. I now have a basic understanding of geomechanics & pore pressure prediction.", featured: true },
+    { id: 4, name: 'Engr. Oluwatoyin Olusegun', title: 'Lead Field Production (Well Delivery)', company: 'NEPL', rating: 5, quote: "The class was practical and full of shared experiences. The quality of facilitators and their knowledge was top-notch.", featured: true },
+    { id: 5, name: 'Adetayo Ademolaowa Omotola', title: 'Reservoir Engineer', company: 'NNPC', rating: 5, quote: "The quality of the facilitators and their knowledge was top-notch... venue, meals etc beyond adequate.", featured: true },
+    { id: 6, name: 'Paul Yakubu W.', title: 'Operations Planner', company: 'NEPL', rating: 4, quote: "The training is robust so it should be allocated more time.", featured: true },
+    { id: 7, name: 'Engr. Chukwuemeka Nwosu', title: 'Senior Reservoir Engineer', company: 'NNPC E&P Limited', rating: 5, quote: "Excellent practical sessions with real-world drilling scenarios. The facilitators brought immense field experience." },
+    { id: 8, name: 'Engr. Adebayo Johnson', title: 'Well Integrity Engineer', company: 'NEPL', rating: 5, quote: "The pore pressure prediction module transformed my approach to well planning. Highly practical content." },
+    { id: 9, name: 'Engr. Folake Adeyemi', title: 'Drilling Engineer', company: 'NNPC', rating: 5, quote: "Best technical training I've attended. The simulation exercises were particularly valuable." },
+    { id: 10, name: 'Engr. Sunday Peters', title: 'Production Engineer', company: 'NEPL', rating: 4, quote: "Very comprehensive program. Would benefit from additional days for hands-on practice." },
+    { id: 11, name: 'Engr. Kabiru Abdullahi', title: 'Geologist', company: 'NNPC E&P Limited', rating: 5, quote: "The geomechanics fundamentals were explained clearly. Now I better understand reservoir behavior." },
+    { id: 12, name: 'Engr. Grace Okonkwo', title: 'Field Development Engineer', company: 'NEPL', rating: 5, quote: "Outstanding program. The case studies from global operations added significant value." },
+    { id: 13, name: 'Engr. Marcus Idahosa', title: 'Senior Production Technologist', company: 'NNPC', rating: 4, quote: "Excellent content and delivery. The program equipped me with tools I use daily." }
+  ],
+  curriculum: [
+    'Fundamentals of rock mechanics and geomechanics',
+    'Pore pressure prediction methodologies',
+    'Wellbore stability analysis',
+    'Drilling optimization techniques',
+    'Real-world case studies from global operations',
+    'Hands-on software modelling exercises'
+  ],
+  methodology: [
+    '5-day intensive format (40+ contact hours)',
+    'Mix of lectures, simulations, group work',
+    'Real-time drilling scenario exercises',
+    'Peer learning and experience sharing',
+    'Post-program certification and materials'
+  ],
+  faculty: 'Industry veterans with 20+ years field experience, international experts from major energy operators, combined academic rigor with practical application'
+};

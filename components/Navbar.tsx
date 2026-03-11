@@ -111,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({
               <button onClick={onSearchOpen} className="text-white/60 hover:text-[#D4AF37] transition-colors p-2">
                 <Search className="w-5 h-5" />
               </button>
-              <button className="hidden sm:block px-8 py-2.5 bg-[#D4AF37] text-[#050505] text-[10px] uppercase tracking-[0.2em] font-bold hover:brightness-110 transition-all duration-300">
+              <button onClick={() => onViewChange('training')} className="hidden sm:block px-8 py-2.5 bg-[#D4AF37] text-[#050505] text-[10px] uppercase tracking-[0.2em] font-bold hover:brightness-110 transition-all duration-300">
                 Apply Now
               </button>
               <button className="lg:hidden text-white p-2" onClick={() => setIsMobileMenuOpen(true)}>
@@ -126,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({
           onViewChange={onViewChange}
         />
       </nav>
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} onSearchOpen={onSearchOpen} />
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} onSearchOpen={onSearchOpen} onViewChange={onViewChange} />
     </>
   );
 };

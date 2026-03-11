@@ -1,12 +1,11 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { COLORS } from '@/constants';
 
 const metrics = [
-  { value: 1200, label: 'Leaders Trained', suffix: '+' },
-  { value: 7, label: 'Annual Summits', suffix: '' },
-  { value: 50, label: 'Partner Orgs', suffix: '+' },
-  { value: 15, label: 'Countries Reached', suffix: '' },
+  { value: 13, label: 'Senior Engineers Certified', suffix: '', source: 'NNPC geomechanics cohort | Feb 2026' },
+  { value: 4.7, label: 'Overall Rating', suffix: '/5', source: 'Post-program evaluation | 13 participants' },
+  { value: 100, label: 'Would Recommend', suffix: '%', source: 'Feedback forms | Feb 13, 2026' },
+  { value: 92, label: 'Hands-On Rating', suffix: '%', source: 'Practical session assessment' },
 ];
 
 const Counter: React.FC<{ value: number; suffix: string }> = ({ value, suffix }) => {
@@ -20,7 +19,7 @@ const Counter: React.FC<{ value: number; suffix: string }> = ({ value, suffix })
           let start = 0;
           const end = value;
           const duration = 2000;
-          const increment = Math.ceil(end / 60);
+          const increment = Math.max(end / 60, value % 1 !== 0 ? 0.1 : 1);
           
           const timer = setInterval(() => {
             start += increment;
@@ -44,7 +43,7 @@ const Counter: React.FC<{ value: number; suffix: string }> = ({ value, suffix })
 
   return (
     <div ref={elementRef} className="text-6xl md:text-8xl font-light text-white alt-sans mb-4 tracking-tighter">
-      {count.toLocaleString()}<span className="text-[#D4AF37]">{suffix}</span>
+      {value % 1 !== 0 ? count.toFixed(1) : Math.round(count).toLocaleString()}<span className="text-[#D4AF37]">{suffix}</span>
     </div>
   );
 };
@@ -62,14 +61,17 @@ const Metrics: React.FC = () => {
               <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-[10px] font-bold">
                 {metric.label}
               </p>
+              <p className="mt-3 text-white/35 text-[11px] leading-relaxed max-w-[14rem] mx-auto">
+                {metric.source}
+              </p>
             </div>
           ))}
         </div>
 
         <div className="mt-24 max-w-2xl mx-auto text-center">
-          <div className="pill-badge mx-auto mb-8 w-fit opacity-60">IMPACT METRICS</div>
+          <div className="pill-badge mx-auto mb-8 w-fit opacity-60">VERIFIED PROGRAM METRICS</div>
           <p className="text-white/40 text-lg font-light italic serif leading-relaxed">
-            "We define our success by the resilience and efficiency of the institutions our graduates build."
+            "These figures come from the February 9-13, 2026 NNPC E&P Limited geomechanics program evaluation."
           </p>
         </div>
       </div>

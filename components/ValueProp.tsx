@@ -32,12 +32,12 @@ const ValueProp: React.FC = () => {
         <div className="lg:w-1/2 relative">
           <div className="grid grid-cols-2 gap-4">
              <img 
-               src="https://leadboldconsulting.co.uk/wp-content/uploads/2023/09/company.jpg" 
+               src="/company.jpg" 
                className="w-full aspect-[4/5] object-cover rounded shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-700" 
                alt="LeadBold Institutional Excellence" 
              />
              <img 
-               src="https://leadboldconsulting.co.uk/wp-content/uploads/2021/11/KC.jpg" 
+               src="/download.jpeg" 
                className="w-full aspect-[4/5] object-cover rounded shadow-2xl mt-12 transform -rotate-1 hover:rotate-0 transition-transform duration-700" 
                alt="Strategic Advisory" 
              />

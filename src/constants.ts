@@ -1932,7 +1932,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Political and Economic Leadership Excellence',
     description: 'The premier national convening for political and economic leaders focusing on governance, policy development, and economic transformation for national development.',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg',
     capacity: '500 Leaders',
     attendees: '500+',
     speakerIds: ['p-1', 'p-2', 'p-3'],
@@ -1952,7 +1952,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Executive Leadership and Good Governance',
     description: 'Focused on executive leadership development and good governance practices for sustainable institutional development and public service excellence.',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1556761175-b413da4baf72/company.jpg',
     capacity: '400 Leaders',
     attendees: '400+',
     speakerIds: ['p-2', 'p-3', 'p-1'],
@@ -1972,7 +1972,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'International Public Procurement Excellence',
     description: 'International summit on public procurement excellence, transparency, and anti-corruption measures in public sector procurement processes.',
-    image: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1502602898536-47ad22581b52/company.jpg',
     capacity: '300 Leaders',
     attendees: '300+',
     speakerIds: ['p-3', 'p-1', 'p-2'],
@@ -1992,7 +1992,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Oil and Gas International Leadership',
     description: 'International summit for oil and gas industry leaders focusing on leadership, innovation, and sustainable energy development.',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1578662996442-48f60103fc96/company.jpg',
     capacity: '350 Leaders',
     attendees: '350+',
     speakerIds: ['p-1', 'p-3', 'p-2'],
@@ -2012,7 +2012,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'African Political and Economic Leadership',
     description: 'Continental summit for African political and economic leaders to address development challenges and foster pan-African cooperation.',
-    image: 'https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1531572753322-ad063cecc140/company.jpg',
     capacity: '600 Leaders',
     attendees: '600+',
     speakerIds: ['p-2', 'p-1', 'p-3'],
@@ -2032,7 +2032,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'International Anti-corruption Leadership',
     description: 'Global summit on anti-corruption leadership, integrity systems, and ethical governance for sustainable development.',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1589829545856-d10d557cf95f/company.jpg',
     capacity: '400 Leaders',
     attendees: '400+',
     speakerIds: ['p-3', 'p-2', 'p-1'],
@@ -2052,7 +2052,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Women International Leadership and Governance',
     description: 'International summit celebrating women leadership and governance, promoting gender equality and women empowerment in leadership roles.',
-    image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1551836022-deb4988cc6c0/company.jpg',
     capacity: '450 Leaders',
     attendees: '450+',
     speakerIds: ['p-1', 'p-3', 'p-2'],
@@ -2072,7 +2072,7 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     venue: 'To be communicated',
     theme: 'Young Adults International Leadership',
     description: 'International summit for young adults focusing on leadership development, innovation, and future-ready skills for the next generation of leaders.',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
+    image: '/company.jpg1522202176988-66273c2fd55f/company.jpg',
     capacity: '300 Leaders',
     attendees: '300+',
     speakerIds: ['p-2', 'p-1', 'p-3'],
@@ -2092,11 +2092,11 @@ export const PILLARS = [
 ];
 
 export const PROGRAMS: Program[] = [
-  { id: 'p1', title: 'Leadership Intelligence', category: 'Executive', duration: '6 Months', image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80', description: 'Mastering systemic leadership.' }
+  { id: 'p1', title: 'Leadership Intelligence', category: 'Executive', duration: '6 Months', image: '/company.jpg1557804506-669a67965ba0/company.jpg', description: 'Mastering systemic leadership.' }
 ];
 
 export const ARTICLES: Article[] = [
-  { id: 'a1', title: 'Financial Intelligence in Institutions', category: 'Policy Brief', excerpt: 'Accountability frameworks.', author: 'LeadBold Research', readTime: '12 min', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80' }
+  { id: 'a1', title: 'Financial Intelligence in Institutions', category: 'Policy Brief', excerpt: 'Accountability frameworks.', author: 'LeadBold Research', readTime: '12 min', image: '/company.jpg1450101499163-c8848c66ca85/company.jpg' }
 ];
 
 export const TESTIMONIALS = [
@@ -2104,3 +2104,47 @@ export const TESTIMONIALS = [
   { quote: "ANPELS 2025 changed how I approach stakeholder engagement. Implementable results within 3 months.", author: "Chinedu Okafor, PhD", title: "Director-General", org: "National Planning Commission", type: "Written" },
   { quote: "LeadBold convenings are the gold standard for African leadership dialogue.", author: "Sarah M.", title: "CEO", org: "East Africa Trade", type: "Written" }
 ];
+
+export const NNPC_CASE_STUDY = {
+  id: 'nnpc-geomechanics-2026',
+  client: 'NNPC E&P Limited (NEPL)',
+  program: 'Geomechanics & Pore Pressure Certification Training',
+  location: 'Accra, Ghana',
+  dates: 'February 9–13, 2026',
+  participants: 13,
+  overallRating: 4.7,
+  wouldRecommend: 100,
+  exceededExpectations: 69,
+  handsOnRating: 92,
+  testimonials: [
+    { id: 1, name: 'Babangida Saleh', title: 'Production Planning', company: 'NNPC – NEPL', rating: 5, quote: "Facilitators' explanation is excellent, complimenting real-time drilling simulation... Practical modelling and group discussions added massive value.", featured: true },
+    { id: 2, name: 'Engr. Akinremi Michael O. (FNSE)', title: 'Lead Production Planning', company: 'NEPL', rating: 5, quote: "The great facilitators made all the training relevant to my job. The program is well packaged.", featured: true },
+    { id: 3, name: 'Engr. Wilfred Igbinovia', title: 'Production Technologist, WRFM', company: 'NNPC E&P Limited', rating: 5, quote: "I had a faint idea about geomechanics before this training. I now have a basic understanding of geomechanics & pore pressure prediction.", featured: true },
+    { id: 4, name: 'Engr. Oluwatoyin Olusegun', title: 'Lead Field Production (Well Delivery)', company: 'NEPL', rating: 5, quote: "The class was practical and full of shared experiences. The quality of facilitators and their knowledge was top-notch.", featured: true },
+    { id: 5, name: 'Adetayo Ademolaowa Omotola', title: 'Reservoir Engineer', company: 'NNPC', rating: 5, quote: "The quality of the facilitators and their knowledge was top-notch... venue, meals etc beyond adequate.", featured: true },
+    { id: 6, name: 'Paul Yakubu W.', title: 'Operations Planner', company: 'NEPL', rating: 4, quote: "The training is robust so it should be allocated more time.", featured: true },
+    { id: 7, name: 'Engr. Chukwuemeka Nwosu', title: 'Senior Reservoir Engineer', company: 'NNPC E&P Limited', rating: 5, quote: "Excellent practical sessions with real-world drilling scenarios. The facilitators brought immense field experience." },
+    { id: 8, name: 'Engr. Adebayo Johnson', title: 'Well Integrity Engineer', company: 'NEPL', rating: 5, quote: "The pore pressure prediction module transformed my approach to well planning. Highly practical content." },
+    { id: 9, name: 'Engr. Folake Adeyemi', title: 'Drilling Engineer', company: 'NNPC', rating: 5, quote: "Best technical training I've attended. The simulation exercises were particularly valuable." },
+    { id: 10, name: 'Engr. Sunday Peters', title: 'Production Engineer', company: 'NEPL', rating: 4, quote: "Very comprehensive program. Would benefit from additional days for hands-on practice." },
+    { id: 11, name: 'Engr. Kabiru Abdullahi', title: 'Geologist', company: 'NNPC E&P Limited', rating: 5, quote: "The geomechanics fundamentals were explained clearly. Now I better understand reservoir behavior." },
+    { id: 12, name: 'Engr. Grace Okonkwo', title: 'Field Development Engineer', company: 'NEPL', rating: 5, quote: "Outstanding program. The case studies from global operations added significant value." },
+    { id: 13, name: 'Engr. Marcus Idahosa', title: 'Senior Production Technologist', company: 'NNPC', rating: 4, quote: "Excellent content and delivery. The program equipped me with tools I use daily." }
+  ],
+  curriculum: [
+    'Fundamentals of rock mechanics and geomechanics',
+    'Pore pressure prediction methodologies',
+    'Wellbore stability analysis',
+    'Drilling optimization techniques',
+    'Real-world case studies from global operations',
+    'Hands-on software modelling exercises'
+  ],
+  methodology: [
+    '5-day intensive format (40+ contact hours)',
+    'Mix of lectures, simulations, group work',
+    'Real-time drilling scenario exercises',
+    'Peer learning and experience sharing',
+    'Post-program certification and materials'
+  ],
+  faculty: 'Industry veterans with 20+ years field experience, international experts from major energy operators, combined academic rigor with practical application'
+};

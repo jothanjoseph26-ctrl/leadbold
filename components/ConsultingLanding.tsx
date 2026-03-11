@@ -17,7 +17,7 @@ const ConsultingLanding: React.FC<ConsultingLandingProps> = ({ onBack }) => {
       {/* 1. INSTITUTIONAL HERO */}
       <section className="relative h-[80vh] flex items-center justify-center text-center px-6 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">
-           <img src="media/company.jpg" className="w-full h-full object-cover" alt="LeadBold Consulting Office" />
+           <img src="/company.jpg" className="w-full h-full object-cover" alt="LeadBold Consulting Office" />
            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#0A1628]/90 to-transparent" />
         </div>
         <div className="absolute inset-0 noise-bg opacity-[0.08]" />

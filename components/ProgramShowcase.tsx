@@ -6,9 +6,11 @@ import { ArrowRight } from 'lucide-react';
 
 interface ProgramShowcaseProps {
   courses?: DetailedCourse[];
+  onViewAll?: () => void;
+  onViewCourse?: (course: DetailedCourse) => void;
 }
 
-const ProgramShowcase: React.FC<ProgramShowcaseProps> = ({ courses = ALL_COURSES }) => {
+const ProgramShowcase: React.FC<ProgramShowcaseProps> = ({ courses = ALL_COURSES, onViewAll, onViewCourse }) => {
   return (
     <section id="schools" className="py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -16,7 +18,7 @@ const ProgramShowcase: React.FC<ProgramShowcaseProps> = ({ courses = ALL_COURSES
           <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-[10px] font-bold">Curated Excellence</p>
           <h2 className="text-5xl md:text-6xl text-[#050505] serif">Institutional Programs</h2>
         </div>
-        <button className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#050505] hover:text-[#D4AF37] transition-colors border-b border-[#050505] pb-1">
+        <button onClick={onViewAll} className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#050505] hover:text-[#D4AF37] transition-colors border-b border-[#050505] pb-1">
           View All Programs <ArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -33,8 +35,8 @@ const ProgramShowcase: React.FC<ProgramShowcaseProps> = ({ courses = ALL_COURSES
                 {program.duration}
               </div>
               <div className="absolute bottom-6 left-6 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <button className="px-6 py-2 border border-white text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-[#050505] transition-all">
-                  Apply Now
+                <button onClick={() => onViewCourse?.(program)} className="px-6 py-2 border border-white text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-[#050505] transition-all">
+                  View Program
                 </button>
               </div>
             </div>

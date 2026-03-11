@@ -5,28 +5,38 @@ import { ArrowDown } from 'lucide-react';
 const slides = [
   {
     image: '/sliders1.jpg',
-    year: '2026',
-    heading: 'LEADBOLD',
-    subheading: 'Where Leaders Are Forged',
-    text: "An Institutional Platform for Leadership Excellence."
+    eyebrow: 'Institutional Authority',
+    heading: 'World-Class Leadership & Institutional Development',
+    subheading: 'Headquartered in Abuja. Operating across three continents.',
+    text: 'Trusted by NNPC, the Nigerian Senate, and high-impact public institutions building Africa\'s future.',
+    primaryCta: { label: 'Explore Our Services', action: 'consulting' },
+    secondaryCta: { label: 'View Programs', action: 'training' },
   },
   {
     image: '/sliders.jpg',
-    year: '2026',
-    heading: 'LEADBOLD',
-    subheading: 'Institutional Excellence',
-    text: "Building the foundations for national transformation."
+    eyebrow: 'NNPC Proof',
+    heading: 'Delivering Excellence For Africa\'s Energy Leaders',
+    subheading: '"The great facilitators made all the training relevant to my job."',
+    text: 'Engr. Akinremi Michael O. (FNSE), Lead Production Planning, NEPL. 4.7/5 rating. 100% would recommend. February 9-13, 2026.',
+    primaryCta: { label: 'Read NNPC Case Study', action: 'case-study' },
+    secondaryCta: { label: 'View Testimonials', action: 'testimonials' },
   },
   {
     image: '/sliders3.jpg',
-    year: '2026',
-    heading: 'LEADBOLD',
-    subheading: 'Strategic Advisory',
-    text: "Empowering governments and global organizations."
+    eyebrow: 'Transformation',
+    heading: 'Executive Education, Strategic Advisory, Global Summits',
+    subheading: 'Custom programs designed for your institutional context.',
+    text: 'Work with LeadBold to strengthen leadership pipelines, execution discipline, and cross-sector influence.',
+    primaryCta: { label: 'Schedule Consultation', href: 'mailto:info@leadboldconsulting.co.uk?subject=Consultation%20Inquiry' },
+    secondaryCta: { label: 'View Summits', action: 'summits' },
   }
 ];
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onViewChange: (view: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onViewChange }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -35,6 +45,19 @@ const Hero: React.FC = () => {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
+
+  const activeSlide = slides[currentSlide];
+
+  const handleCtaClick = (cta: { action?: string; href?: string }) => {
+    if (cta.href) {
+      window.location.href = cta.href;
+      return;
+    }
+
+    if (cta.action) {
+      onViewChange(cta.action);
+    }
+  };
 
   return (
     <section className="relative h-screen w-full flex flex-col bg-[#050505] overflow-hidden">
@@ -105,38 +128,42 @@ const Hero: React.FC = () => {
 
       {/* 5. CONTENT LAYER */}
       <div className="relative h-full w-full z-20 flex flex-col items-center justify-end lg:justify-center text-center px-6 pb-16 lg:pb-0 pt-32">
-        <div className="space-y-4 md:space-y-6 lg:mt-48 animate-fade-in-up">
-          
-          {/* Large Year Accent */}
-          <div className="alt-sans text-5xl md:text-7xl lg:text-9xl text-white font-light tracking-tighter opacity-90 flex items-center justify-center gap-3 lg:gap-4">
-            <span>20</span>
-            <span className="w-1 lg:w-2 h-10 md:h-16 lg:h-24 bg-[#D4AF37]" />
-            <span>26</span>
-          </div>
+          <div className="space-y-4 md:space-y-6 lg:mt-48 animate-fade-in-up">
+          <p className="text-[#D4AF37] uppercase tracking-[0.5em] text-[10px] md:text-xs font-black">
+            {activeSlide.eyebrow}
+          </p>
 
           {/* Main Title */}
-          <h1 className="text-5xl md:text-8xl lg:text-[11rem] text-white serif font-bold tracking-[0.05em] lg:tracking-[0.1em] leading-none drop-shadow-2xl">
-            LEADBOLD
+          <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] text-white serif font-bold tracking-tight leading-[1.05] drop-shadow-2xl max-w-6xl mx-auto">
+            {activeSlide.heading}
           </h1>
 
-          {/* Gold Brochure Badge */}
           <div className="flex justify-center pt-2">
             <div className="pill-badge brochure-shadow text-[8px] lg:text-[10px] scale-110 lg:scale-125">
-              INSTITUTIONAL BROCHURE
+              LEADBOLD CONSULTING
             </div>
           </div>
 
-          <p className="text-white/70 text-sm md:text-lg lg:text-2xl font-light italic mt-6 lg:mt-10 max-w-2xl mx-auto px-4 leading-relaxed">
-            "{slides[currentSlide].subheading}"
+          <p className="text-white/80 text-sm md:text-lg lg:text-2xl font-light italic mt-6 lg:mt-10 max-w-3xl mx-auto px-4 leading-relaxed">
+            {activeSlide.subheading}
+          </p>
+
+          <p className="text-white/60 text-sm md:text-base lg:text-lg max-w-3xl mx-auto px-4 leading-relaxed">
+            {activeSlide.text}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pt-8 lg:pt-12 justify-center items-center">
-            <button className="text-[10px] lg:text-xs uppercase tracking-[0.4em] font-bold text-[#D4AF37] hover:text-white transition-colors border-b border-[#D4AF37]/40 pb-1">
-              Strategic Consulting
+            <button
+              onClick={() => handleCtaClick(activeSlide.primaryCta)}
+              className="px-8 py-4 bg-[#D4AF37] text-[#050505] text-[10px] lg:text-xs uppercase tracking-[0.25em] font-black hover:brightness-110 transition-all"
+            >
+              {activeSlide.primaryCta.label}
             </button>
-            <div className="hidden sm:block w-[1px] h-4 bg-white/20" />
-            <button className="text-[10px] lg:text-xs uppercase tracking-[0.4em] font-bold text-[#D4AF37] hover:text-white transition-colors border-b border-[#D4AF37]/40 pb-1">
-              Leadership Education
+            <button
+              onClick={() => handleCtaClick(activeSlide.secondaryCta)}
+              className="text-[10px] lg:text-xs uppercase tracking-[0.35em] font-bold text-[#D4AF37] hover:text-white transition-colors border-b border-[#D4AF37]/40 pb-1"
+            >
+              {activeSlide.secondaryCta.label}
             </button>
           </div>
         </div>
