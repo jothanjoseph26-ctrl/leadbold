@@ -37,9 +37,12 @@ const ValueProp: React.FC = () => {
                alt="LeadBold Institutional Excellence" 
              />
              <img 
-               src="/download.jpeg" 
+               src="/download.jpg" 
                className="w-full aspect-[4/5] object-cover rounded shadow-2xl mt-12 transform -rotate-1 hover:rotate-0 transition-transform duration-700" 
                alt="Strategic Advisory" 
+               onError={(event) => {
+                 event.currentTarget.src = '/company.jpg';
+               }}
              />
           </div>
           <div className="absolute inset-0 border-2 border-[#D4AF37]/20 translate-x-4 translate-y-4 -z-10" />

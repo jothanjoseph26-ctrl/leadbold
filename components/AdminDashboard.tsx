@@ -16,6 +16,7 @@ interface AdminDashboardProps {
   insights: Article[];
   personnel: Personnel[];
   onExit: () => void;
+  onFormsClick?: () => void;
   onUpdateCourse: (course: DetailedCourse) => void;
   onAddCourse: (course: DetailedCourse) => void;
   onDeleteCourse: (id: string) => void;
@@ -31,7 +32,7 @@ interface AdminDashboardProps {
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ 
-  courses, summits, insights, personnel, onExit, 
+  courses, summits, insights, personnel, onExit, onFormsClick,
   onUpdateCourse, onAddCourse, onDeleteCourse,
   onUpdateSummit, onAddSummit, onDeleteSummit,
   onUpdateInsight, onAddInsight, onDeleteInsight,
@@ -126,7 +127,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         id: `p-${Date.now()}`,
         name: 'New Person',
         title: 'Expert',
-        image: 'https://i.pravatar.cc/300',
+        image: '/summit.jpg',
         bio: '',
         credentials: [],
         category: 'Faculty'
@@ -181,6 +182,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
           <button onClick={() => setActiveTab('programs')} className={`w-full flex items-center gap-4 px-6 py-4 rounded-sm text-sm uppercase tracking-widest font-bold transition-all ${activeTab === 'programs' ? 'bg-[#D4AF37] text-[#050505]' : 'text-white/40 hover:bg-white/5'}`}><GraduationCap className="w-4 h-4" /> Academy Hub</button>
           <button onClick={() => setActiveTab('summits')} className={`w-full flex items-center gap-4 px-6 py-4 rounded-sm text-sm uppercase tracking-widest font-bold transition-all ${activeTab === 'summits' ? 'bg-[#D4AF37] text-[#050505]' : 'text-white/40 hover:bg-white/5'}`}><Presentation className="w-4 h-4" /> Summit Hub</button>
           <button onClick={() => setActiveTab('personnel')} className={`w-full flex items-center gap-4 px-6 py-4 rounded-sm text-sm uppercase tracking-widest font-bold transition-all ${activeTab === 'personnel' ? 'bg-[#D4AF37] text-[#050505]' : 'text-white/40 hover:bg-white/5'}`}><UserCheck className="w-4 h-4" /> Personnel Dir.</button>
+          <hr className="border-white/10 my-4" />
+          <div className="px-6 py-2 text-xs uppercase tracking-widest font-bold text-white/20">System</div>
+          <button onClick={onFormsClick} className={`w-full flex items-center gap-4 px-6 py-4 rounded-sm text-sm uppercase tracking-widest font-bold transition-all text-white/40 hover:bg-white/5 hover:text-[#D4AF37]`}><FileText className="w-4 h-4" /> Forms System</button>
         </nav>
         <div className="p-6 border-t border-white/5">
           <button onClick={onExit} className="w-full flex items-center gap-4 px-6 py-4 rounded-sm text-sm uppercase tracking-widest font-bold text-white/40 hover:text-white transition-all"><LogOut className="w-4 h-4" /> Exit</button>
@@ -233,6 +237,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <img src={p.image} className="w-14 h-14 rounded-full grayscale object-cover" />
                   <div className="flex-1"><h4 className="font-bold text-[#050505]">{p.name}</h4><p className="text-[9px] uppercase tracking-widest text-slate-400">{p.title}</p></div>
                   <button onClick={() => handleEditPersonnel(p)} className="p-2 text-slate-200 hover:text-[#D4AF37] transition-all"><Edit2 className="w-4 h-4" /></button>
+                  <button onClick={() => onDeletePersonnel(p.id)} className="p-2 text-slate-200 hover:text-red-500 transition-all"><Trash2 className="w-4 h-4" /></button>
                 </div>
               ))}
             </div>
@@ -386,6 +391,46 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                 </div>
                              </div>
                           ))}
+                       </div>
+                    </section>
+                  </div>
+                )}
+
+                {/* --- PERSONNEL EDITOR --- */}
+                {editorType === 'personnel' && editingPerson && (
+                  <div className="space-y-8">
+                    <section className="bg-[#1a1a1a] p-8 rounded-sm space-y-6">
+                       <div className="flex items-center gap-3 text-[#D4AF37] text-[10px] font-black uppercase tracking-widest pb-4 border-b border-white/10"><UserCheck className="w-4 h-4" /> Personnel Profile</div>
+                       <div className="grid grid-cols-2 gap-6">
+                          <div className="col-span-2 space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Full Name</label><input value={editingPerson.name} onChange={e => setEditingPerson({...editingPerson, name: e.target.value})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-xl serif text-white focus:border-[#D4AF37] outline-none rounded-sm" /></div>
+                          <div className="space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Title/Position</label><input value={editingPerson.title} onChange={e => setEditingPerson({...editingPerson, title: e.target.value})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-sm text-white focus:border-[#D4AF37] outline-none rounded-sm" /></div>
+                          <div className="space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Organization</label><input value={editingPerson.organization || ''} onChange={e => setEditingPerson({...editingPerson, organization: e.target.value})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-sm text-white focus:border-[#D4AF37] outline-none rounded-sm" /></div>
+                          <div className="space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Email</label><input value={editingPerson.email || ''} onChange={e => setEditingPerson({...editingPerson, email: e.target.value})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-sm text-white focus:border-[#D4AF37] outline-none rounded-sm" /></div>
+                          <div className="space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Category</label><select value={editingPerson.category} onChange={e => setEditingPerson({...editingPerson, category: e.target.value as any})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-xs text-white focus:border-[#D4AF37] outline-none rounded-sm"><option>Faculty</option><option>Keynote</option><option>Advisory</option><option>Leadership</option></select></div>
+                          <div className="col-span-2 space-y-2"><label className="text-[9px] uppercase font-bold text-white/50">Profile Image URL</label><input value={editingPerson.image} onChange={e => setEditingPerson({...editingPerson, image: e.target.value})} className="w-full bg-white/5 border border-white/10 py-3 px-4 text-sm text-white focus:border-[#D4AF37] outline-none rounded-sm" /></div>
+                       </div>
+                    </section>
+
+                    <section className="bg-[#1a1a1a] p-8 rounded-sm space-y-6">
+                       <div className="flex items-center gap-3 text-[#D4AF37] text-[10px] font-black uppercase tracking-widest pb-4 border-b border-white/10"><FileText className="w-4 h-4" /> Biography</div>
+                       <textarea value={editingPerson.bio} onChange={e => setEditingPerson({...editingPerson, bio: e.target.value})} className="w-full p-4 text-sm bg-white/5 border border-white/10 text-white focus:border-[#D4AF37] outline-none rounded-sm min-h-[200px]" placeholder="Enter biography..." />
+                    </section>
+
+                    <section className="bg-[#1a1a1a] p-8 rounded-sm space-y-6">
+                       <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                          <div className="flex items-center gap-3 text-[#D4AF37] text-[10px] font-black uppercase tracking-widest"><Award className="w-4 h-4" /> Credentials & Certifications</div>
+                          <button onClick={() => setEditingPerson({...editingPerson, credentials: [...editingPerson.credentials, '']})} className="text-[9px] font-black uppercase text-[#D4AF37] hover:underline">+ Add Credential</button>
+                       </div>
+                       <div className="space-y-3">
+                          {editingPerson.credentials.map((cred, i) => (
+                             <div key={i} className="flex gap-3 items-center bg-white/5 p-3 rounded-sm border border-white/5">
+                                <input value={cred} onChange={e => { const upd = [...editingPerson.credentials]; upd[i] = e.target.value; setEditingPerson({...editingPerson, credentials: upd}); }} className="flex-1 bg-transparent border-none py-2 text-sm text-white outline-none placeholder-white/30" placeholder="Credential or certification..." />
+                                <button onClick={() => setEditingPerson({...editingPerson, credentials: editingPerson.credentials.filter((_, idx) => idx !== i)})} className="p-1 hover:bg-red-500/20 rounded"><X className="w-4 h-4 text-red-400" /></button>
+                             </div>
+                          ))}
+                          {editingPerson.credentials.length === 0 && (
+                            <p className="text-white/30 text-sm italic">No credentials added yet</p>
+                          )}
                        </div>
                     </section>
                   </div>

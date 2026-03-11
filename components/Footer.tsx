@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-4 gap-16 mb-20">
           <div className="space-y-8 col-span-2">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 border-2 border-[#D4AF37] flex items-center justify-center font-bold text-[#D4AF37] text-xl serif">LB</div>
+              <img src="/Leadbold-logo.png" alt="LeadBold" className="h-10 w-auto" />
               <span className="text-2xl font-semibold tracking-tight serif">LEADBOLD</span>
             </div>
             <p className="text-white/40 max-w-md leading-relaxed text-lg font-light">

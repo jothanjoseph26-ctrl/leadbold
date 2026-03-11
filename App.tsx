@@ -30,12 +30,65 @@ import MediaStudio from './components/MediaStudio';
 import AboutPortal from './components/AboutPortal';
 import CaseStudy from './components/CaseStudy';
 import TestimonialsPage from './components/TestimonialsPage';
+import LoginPage from './components/LoginPage';
 import { DetailedCourse, ALL_COURSES, FLAGSHIP_SUMMITS, ARTICLES, INITIAL_PERSONNEL } from './constants';
 import { Summit, Article, Personnel } from './types';
 import { supabase } from './lib/supabase';
 import { Loader2 } from 'lucide-react';
 
-export type AppView = 'home' | 'training' | 'single-course' | 'enrollment' | 'admin' | 'summits' | 'single-summit' | 'consulting' | 'media-studio' | 'about-main' | 'about-story' | 'about-vision' | 'about-philosophy' | 'about-leadership' | 'about-partnerships' | 'about-careers' | 'about-press' | 'about-reports' | 'case-study' | 'testimonials';
+export type AppView = 'home' | 'training' | 'single-course' | 'enrollment' | 'admin' | 'login' | 'summits' | 'single-summit' | 'consulting' | 'media-studio' | 'about-main' | 'about-story' | 'about-vision' | 'about-philosophy' | 'about-leadership' | 'about-partnerships' | 'about-careers' | 'about-press' | 'about-reports' | 'case-study' | 'testimonials';
+
+const ADMIN_SESSION_KEY = 'leadbold_admin_authenticated';
+const DEFAULT_ADMIN_PASSWORDS = ['Leabold5%', 'Leadbold26'];
+
+const viewToPath = (view: AppView, activeCourse: DetailedCourse | null, activeSummit: Summit | null) => {
+  switch (view) {
+    case 'home':
+      return '/';
+    case 'training':
+      return '/training';
+    case 'single-course':
+      return activeCourse ? `/courses/${activeCourse.id}` : '/training';
+    case 'enrollment':
+      return activeCourse ? `/enroll/${activeCourse.id}` : '/training';
+    case 'summits':
+      return '/summits';
+    case 'single-summit':
+      return activeSummit ? `/summits/${activeSummit.id}` : '/summits';
+    case 'consulting':
+      return '/consulting';
+    case 'media-studio':
+      return '/media-studio';
+    case 'case-study':
+      return '/case-study';
+    case 'testimonials':
+      return '/testimonials';
+    case 'about-main':
+      return '/about';
+    case 'about-story':
+      return '/about/story';
+    case 'about-vision':
+      return '/about/vision';
+    case 'about-philosophy':
+      return '/about/philosophy';
+    case 'about-leadership':
+      return '/about/leadership';
+    case 'about-partnerships':
+      return '/about/partnerships';
+    case 'about-careers':
+      return '/about/careers';
+    case 'about-press':
+      return '/about/press';
+    case 'about-reports':
+      return '/about/reports';
+    case 'admin':
+      return '/admin';
+    case 'login':
+      return '/login';
+    default:
+      return '/';
+  }
+};
 
 const App: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -44,6 +97,13 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>('home');
   const [activeCourse, setActiveCourse] = useState<DetailedCourse | null>(null);
   const [activeSummit, setActiveSummit] = useState<Summit | null>(null);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return window.localStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+  });
   
   // Core State
   const [personnel, setPersonnel] = useState<Personnel[]>(INITIAL_PERSONNEL);
@@ -51,6 +111,7 @@ const App: React.FC = () => {
   const [summits, setSummits] = useState<Summit[]>(FLAGSHIP_SUMMITS);
   const [insights, setInsights] = useState<Article[]>(ARTICLES);
   const [bookmarks, setBookmarks] = useState<string[]>([]);
+  const [hasResolvedInitialRoute, setHasResolvedInitialRoute] = useState(false);
 
   // 1. Initial Data Fetch from Supabase
   useEffect(() => {
@@ -90,6 +151,141 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('leadbold_bookmarks', JSON.stringify(bookmarks));
   }, [bookmarks]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.localStorage.setItem(ADMIN_SESSION_KEY, String(isAdminAuthenticated));
+  }, [isAdminAuthenticated]);
+
+  useEffect(() => {
+    const applyPathRoute = () => {
+      const [section, slug] = window.location.pathname.split('/').filter(Boolean);
+
+      if (!section) {
+        setCurrentView('home');
+        setActiveCourse(null);
+        setActiveSummit(null);
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'training') {
+        setCurrentView('training');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'courses' && slug) {
+        const course = courses.find((item) => item.id === slug);
+        if (course) {
+          setActiveCourse(course);
+          setCurrentView('single-course');
+          setHasResolvedInitialRoute(true);
+          return;
+        }
+      }
+
+      if (section === 'enroll' && slug) {
+        const course = courses.find((item) => item.id === slug);
+        if (course) {
+          setActiveCourse(course);
+          setCurrentView('enrollment');
+          setHasResolvedInitialRoute(true);
+          return;
+        }
+      }
+
+      if (section === 'summits' && !slug) {
+        setCurrentView('summits');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'summits' && slug) {
+        const summit = summits.find((item) => item.id === slug);
+        if (summit) {
+          setActiveSummit(summit);
+          setCurrentView('single-summit');
+          setHasResolvedInitialRoute(true);
+          return;
+        }
+      }
+
+      if (section === 'consulting') {
+        setCurrentView('consulting');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'media-studio') {
+        setCurrentView('media-studio');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'case-study') {
+        setCurrentView('case-study');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'testimonials') {
+        setCurrentView('testimonials');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'about') {
+        const aboutViewMap: Record<string, AppView> = {
+          story: 'about-story',
+          vision: 'about-vision',
+          philosophy: 'about-philosophy',
+          leadership: 'about-leadership',
+          partnerships: 'about-partnerships',
+          careers: 'about-careers',
+          press: 'about-press',
+          reports: 'about-reports',
+        };
+
+        setCurrentView(slug ? aboutViewMap[slug] || 'about-main' : 'about-main');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'admin') {
+        setCurrentView(isAdminAuthenticated ? 'admin' : 'login');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      if (section === 'login') {
+        setCurrentView('login');
+        setHasResolvedInitialRoute(true);
+        return;
+      }
+
+      setCurrentView('home');
+      setHasResolvedInitialRoute(true);
+    };
+
+    applyPathRoute();
+    window.addEventListener('popstate', applyPathRoute);
+    return () => window.removeEventListener('popstate', applyPathRoute);
+  }, [courses, summits, isAdminAuthenticated]);
+
+  useEffect(() => {
+    if (!hasResolvedInitialRoute) {
+      return;
+    }
+
+    const nextPath = viewToPath(currentView, activeCourse, activeSummit);
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, '', nextPath);
+    }
+  }, [currentView, activeCourse, activeSummit, hasResolvedInitialRoute]);
 
   const savedCourses = useMemo(() => {
     return courses.filter(course => bookmarks.includes(course.id.toString()));
@@ -192,7 +388,8 @@ const App: React.FC = () => {
         'insights': 'home', // or a dedicated insights view if created
         'consulting': 'consulting',
         'case-study': 'case-study',
-        'testimonials': 'testimonials'
+        'testimonials': 'testimonials',
+        'login': 'login'
       };
       
       setCurrentView(viewMap[view] || (view as AppView));
@@ -213,15 +410,41 @@ const App: React.FC = () => {
   }
 
   const isAboutView = currentView.startsWith('about-');
+  const showChrome = currentView !== 'admin' && currentView !== 'login';
+
+  const handleAdminClick = () => {
+    setCurrentView(isAdminAuthenticated ? 'admin' : 'login');
+  };
+
+  const handleLogin = (password: string) => {
+    const envPasswords = (import.meta as ImportMeta & { env?: Record<string, string> }).env?.VITE_ADMIN_PASSWORDS
+      ?.split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+    const validPasswords = envPasswords?.length ? envPasswords : DEFAULT_ADMIN_PASSWORDS;
+    const isValid = validPasswords.includes(password);
+
+    if (isValid) {
+      setIsAdminAuthenticated(true);
+      setCurrentView('admin');
+    }
+
+    return isValid;
+  };
+
+  const handleLogout = () => {
+    setIsAdminAuthenticated(false);
+    setCurrentView('home');
+  };
 
   return (
     <div className="min-h-screen">
-      {currentView !== 'admin' && (
+      {showChrome && (
         <Navbar 
           onSearchOpen={() => setIsSearchOpen(true)} 
           onSavedOpen={() => setIsSavedOpen(true)}
           bookmarkCount={bookmarks.length} 
-          onAdminClick={() => setCurrentView('admin')}
+          onAdminClick={handleAdminClick}
           onViewChange={handleViewChange}
         />
       )}
@@ -320,6 +543,10 @@ const App: React.FC = () => {
         <TestimonialsPage onBack={() => setCurrentView('home')} />
       )}
 
+      {currentView === 'login' && (
+        <LoginPage onBack={() => setCurrentView('home')} onLogin={handleLogin} />
+      )}
+
       {currentView === 'media-studio' && (
         <MediaStudio onBack={() => setCurrentView('home')} />
       )}
@@ -338,7 +565,7 @@ const App: React.FC = () => {
           summits={summits}
           insights={insights}
           personnel={personnel}
-          onExit={() => setCurrentView('home')}
+          onExit={handleLogout}
           onUpdateCourse={updateCourse}
           onAddCourse={addCourse}
           onDeleteCourse={deleteCourse}
@@ -354,7 +581,7 @@ const App: React.FC = () => {
         />
       )}
 
-      {currentView !== 'admin' && <Footer />}
+      {showChrome && <Footer />}
     </div>
   );
 };

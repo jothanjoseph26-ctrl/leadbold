@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Menu, X, ChevronDown, Heart, Shield } from 'lucide-react';
+import { Search, Menu, X, ChevronDown, Heart, Shield, FileText } from 'lucide-react';
 import { COLORS } from '@/constants';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
@@ -20,6 +20,14 @@ const Navbar: React.FC<NavbarProps> = ({
   bookmarkCount = 0,
   onViewChange
 }) => {
+  const handleFormsClick = () => {
+    const formsPassword = prompt('Enter Forms System Password:');
+    if (formsPassword === 'forms2026' || formsPassword === 'leadbold2026') {
+      onViewChange('forms-dashboard');
+    } else if (formsPassword !== null) {
+      alert('Incorrect password');
+    }
+  };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [adminClicks, setAdminClicks] = useState(0);
@@ -70,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({
       >
         <div className="max-w-[1400px] mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer group" onClick={() => { handleLogoClick(); onViewChange('home'); }}>
-            <div className="w-10 h-10 border-2 border-[#D4AF37] flex items-center justify-center font-bold text-[#D4AF37] text-xl serif group-hover:bg-[#D4AF37] group-hover:text-[#050505] transition-all">LB</div>
+            <img src="/Leadbold-logo.png" alt="LeadBold" className="h-10 w-auto" />
             <div className="flex flex-col -space-y-1">
               <span className="text-white text-2xl font-bold tracking-tight serif hidden sm:block">LEADBOLD</span>
               <span className="text-[#D4AF37] text-[8px] uppercase tracking-[0.4em] font-bold hidden sm:block">Consulting</span>
@@ -94,9 +102,14 @@ const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center space-x-3 lg:space-x-6">
             <div className="hidden xl:flex items-center space-x-6 text-white/50 text-xs uppercase tracking-widest font-bold">
               {showAdminAccess && (
-                <button onClick={onAdminClick} className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
-                  <Shield className="w-4 h-4" /> Admin
-                </button>
+                <>
+                  <button onClick={handleFormsClick} className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
+                    <FileText className="w-4 h-4" /> Forms
+                  </button>
+                  <button onClick={onAdminClick} className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
+                    <Shield className="w-4 h-4" /> Admin
+                  </button>
+                </>
               )}
               <button 
                 onClick={onSavedOpen}
