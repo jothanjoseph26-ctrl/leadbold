@@ -12,7 +12,7 @@ import {
   FormField,
   FormSection,
   FieldType,
-} from '../types/formSystem';
+} from '../../types/formSystem';
 
 interface FormRendererProps {
   form: FormSchema;

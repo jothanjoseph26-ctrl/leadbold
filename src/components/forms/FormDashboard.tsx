@@ -15,8 +15,8 @@ import {
   ExternalLink,
   Filter,
 } from 'lucide-react';
-import { FormSchema, createEmptyForm, generateSlug } from '../types/formSystem';
-import { geomechanicsFeedbackForm, trainingFeedbackTemplate, eventRegistrationTemplate } from '../data/formTemplates';
+import { FormSchema, createEmptyForm, generateSlug } from '../../types/formSystem';
+import { geomechanicsFeedbackForm, trainingFeedbackTemplate, eventRegistrationTemplate } from '../../data/formTemplates';
 
 interface FormDashboardProps {
   forms?: FormSchema[];
@@ -285,78 +285,83 @@ export const FormDashboard: React.FC<FormDashboardProps> = ({
               </div>
             ) : (
               filteredForms.map((form) => (
-                <div key={form.id} className="p-6 hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-lg font-semibold text-gray-900">{form.title}</h3>
-                        {getStatusBadge(form.status)}
-                      </div>
-                      <p className="text-gray-500 mt-1 line-clamp-1">{form.description}</p>
-                      <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
-                        <span>/form/{form.slug}</span>
-                        <span>{form.sections?.length || 0} sections</span>
-                        <span>Updated {new Date(form.updatedAt).toLocaleDateString()}</span>
-                      </div>
+                <div key={form.id} className="p-6 hover:bg-gray-50 transition-colors flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-lg font-semibold text-gray-900">{form.title}</h3>
+                      {getStatusBadge(form.status)}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => onPreviewForm?.(form)}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
-                        title="Preview"
-                      >
-                        <Eye className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => onEditForm?.(form)}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
-                        title="Edit"
-                      >
-                        <Edit className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => onViewSubmissions?.(form)}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
-                        title="Submissions"
-                      >
-                        <BarChart3 className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => handleDuplicateForm(form)}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
-                        title="Duplicate"
-                      >
-                        <Copy className="w-5 h-5" />
-                      </button>
-                      {form.status === 'published' ? (
-                        <button
-                          onClick={() => {
-                            const url = `${window.location.origin}/forms/${form.slug}`;
-                            navigator.clipboard.writeText(url);
-                            alert('Form URL copied to clipboard!');
-                          }}
-                          className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
-                          title="Copy Link"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => handlePublishForm(form.id)}
-                          className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg"
-                          title="Publish"
-                        >
-                          <Send className="w-5 h-5" />
-                        </button>
-                      )}
-                      <button
-                        onClick={() => handleDeleteForm(form.id)}
-                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
-                        title="Delete"
-                      >
-                        <Trash2 className="w-5 h-5" />
-                      </button>
+                    <p className="text-gray-500 mt-1 line-clamp-1">{form.description}</p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
+                      <span>/form/{form.slug}</span>
+                      <span>{form.sections?.length || 0} sections</span>
+                      <span>Updated {new Date(form.updatedAt).toLocaleDateString()}</span>
                     </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => { console.log('Preview clicked', form.id); onPreviewForm?.(form); }}
+                      className="p-3 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                      title="Preview"
+                      type="button"
+                    >
+                      <Eye className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => { console.log('Edit clicked', form.id); onEditForm?.(form); }}
+                      className="p-3 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors cursor-pointer"
+                      title="Edit"
+                      type="button"
+                    >
+                      <Edit className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => onViewSubmissions?.(form)}
+                      className="p-3 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors cursor-pointer"
+                      title="Submissions"
+                      type="button"
+                    >
+                      <BarChart3 className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => handleDuplicateForm(form)}
+                      className="p-3 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors cursor-pointer"
+                      title="Duplicate"
+                      type="button"
+                    >
+                      <Copy className="w-5 h-5" />
+                    </button>
+                    {form.status === 'published' ? (
+                      <button
+                        onClick={() => {
+                          const url = `${window.location.origin}/forms/${form.slug}`;
+                          navigator.clipboard.writeText(url);
+                          alert('Form URL copied to clipboard!');
+                        }}
+                        className="p-3 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors cursor-pointer"
+                        title="Copy Link"
+                        type="button"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handlePublishForm(form.id)}
+                        className="p-3 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors cursor-pointer"
+                        title="Publish"
+                        type="button"
+                      >
+                        <Send className="w-5 h-5" />
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleDeleteForm(form.id)}
+                      className="p-3 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                      title="Delete"
+                      type="button"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
               ))

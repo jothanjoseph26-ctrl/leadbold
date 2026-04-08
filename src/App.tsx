@@ -376,16 +376,23 @@ const App: React.FC = () => {
       const course = courses.find(c => c.id === id);
       if (course) handleViewCourse(course);
     } else {
-      // Mapping generic category strings to their primary landing views
       const viewMap: Record<string, AppView> = {
         'about': 'about-main',
         'schools': 'training',
         'summits': 'summits',
-        'insights': 'home', // or a dedicated insights view if created
-        'consulting': 'consulting'
+        'insights': 'home',
+        'consulting': 'consulting',
+        'forms-dashboard': 'forms-dashboard',
+        'forms-builder': 'forms-builder',
+        'forms-public': 'forms-public',
+        'forms-submissions': 'forms-submissions',
       };
       
-      setCurrentView(viewMap[view] || (view as AppView));
+      if (viewMap[view]) {
+        setCurrentView(viewMap[view]);
+      } else {
+        setCurrentView(view as AppView);
+      }
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

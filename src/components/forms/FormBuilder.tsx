@@ -45,7 +45,7 @@ import {
   createEmptyField,
   createEmptySection,
   FormFieldOption,
-} from '../types/formSystem';
+} from '../../types/formSystem';
 
 interface FormBuilderProps {
   form: FormSchema;
