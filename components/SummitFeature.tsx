@@ -81,9 +81,9 @@ const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured
             <div className="relative z-10 space-y-12">
               <div className="space-y-4 border-b border-white/10 pb-8">
                 <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-[10px] font-black">Why {featured.shortName} Matters</p>
-                <h3 className="text-4xl serif leading-tight">A high-trust convening for the public leaders shaping Nigeria's next chapter.</h3>
+                <h3 className="text-4xl serif leading-tight">{featured.title}</h3>
                 <p className="text-white/60 leading-relaxed">
-                  Limited attendance, senior-level participation, and practical frameworks for political, economic, and institutional leadership.
+                  {featured.description}
                 </p>
               </div>
 
@@ -105,18 +105,18 @@ const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured
                 <div className="space-y-4">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-white/40 font-black">Target Delegation</p>
                   <ul className="space-y-3 text-white/75 text-sm leading-relaxed">
-                    <li>Permanent Secretaries and Directors-General</li>
-                    <li>Senior Public Executives and Reform Leaders</li>
-                    <li>Economic Policy, Governance, and Strategy Teams</li>
+                    {featured.whoShouldAttend.slice(0, 3).map((attendee, i) => (
+                      <li key={i}>{attendee}</li>
+                    ))}
                   </ul>
                 </div>
 
                 <div className="space-y-4">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-white/40 font-black">What Delegates Gain</p>
                   <ul className="space-y-3 text-white/75 text-sm leading-relaxed">
-                    <li>Political and economic leadership frameworks</li>
-                    <li>High-trust peer networking across institutions</li>
-                    <li>Actionable summit materials for post-event execution</li>
+                    {featured.outcomes.slice(0, 3).map((outcome, i) => (
+                      <li key={i}>{outcome}</li>
+                    ))}
                   </ul>
                 </div>
               </div>

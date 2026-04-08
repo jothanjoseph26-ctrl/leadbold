@@ -46,6 +46,10 @@ export interface Summit {
   status: 'Open' | 'Soon' | 'Past';
   whoShouldAttend: string[];
   outcomes: string[];
+  objectives?: string[];
+  whyAttend?: string[];
+  contactEmail?: string;
+  contactPhone?: string;
   agenda: {
     day1: AgendaSession[];
     day2: AgendaSession[];

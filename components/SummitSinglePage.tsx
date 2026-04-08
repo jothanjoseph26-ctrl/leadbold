@@ -77,10 +77,10 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
 
           <div className="grid lg:grid-cols-2 gap-20 items-end">
             <div className="space-y-10 animate-fade-in-up">
-              <div className="flex items-center gap-4">
-                 <div className="bg-[#C9A962] text-[#050505] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] brochure-shadow">
-                   🇳🇬 {summit.location.toUpperCase()}
-                 </div>
+               <div className="flex items-center gap-4">
+                  <div className="bg-[#C9A962] text-[#050505] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] brochure-shadow">
+                    🇬🇭 {summit.location.toUpperCase()}
+                  </div>
                  <div className="flex items-center gap-2 text-white/40 text-[10px] uppercase font-black tracking-widest">
                     <Calendar className="w-4 h-4 text-[#C9A962]" /> {summit.date.toUpperCase()}
                  </div>
@@ -230,7 +230,45 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
                   </div>
                 ))}
              </div>
-          </section>
+           </section>
+
+          {/* Summit Objectives - for Oil & Gas Summit */}
+          {summit.objectives && summit.objectives.length > 0 && (
+            <section className="space-y-16">
+              <div className="flex items-center gap-4 text-[#C9A962] text-[11px] font-black uppercase tracking-[0.5em]">
+                <Target className="w-5 h-5" /> Summit Objectives
+              </div>
+              <div className="bg-[#0a2a66] p-12 text-white rounded-xl">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {summit.objectives.map((obj, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <CheckCircle2 className="w-6 h-6 text-[#c8102e] flex-none mt-1" />
+                      <span className="text-lg serif">{obj}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Why Attend - for Oil & Gas Summit */}
+          {summit.whyAttend && summit.whyAttend.length > 0 && (
+            <section className="space-y-16">
+              <div className="flex items-center gap-4 text-[#C9A962] text-[11px] font-black uppercase tracking-[0.5em]">
+                <Award className="w-5 h-5" /> Why You Must Attend
+              </div>
+              <div className="bg-[#c8102e] p-12 text-white rounded-xl">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {summit.whyAttend.map((reason, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <CheckCircle2 className="w-6 h-6 text-white flex-none mt-1" />
+                      <span className="text-lg serif">{reason}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Right Column: Enrollment & Tiers (Deep Navy) */}

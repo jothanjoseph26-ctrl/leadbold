@@ -17,6 +17,7 @@ interface SummitsLandingProps {
 const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, summits }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 18, hrs: 14, min: 23, sec: 45 });
   const [showCountdown, setShowCountdown] = useState(true);
+  const nextSummit = summits[0];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -79,7 +80,7 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
             <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
               <div className="flex items-center gap-6">
                  <span className="bg-[#050505] text-white px-3 py-1 rounded text-[10px] font-black animate-pulse">URGENT</span>
-                 <p className="text-[11px] font-black uppercase tracking-widest hidden md:block">Next Summit: ANPELS Lagos • Jan 22-23, 2026</p>
+                  <p className="text-[11px] font-black uppercase tracking-widest hidden md:block">Next Summit: {nextSummit?.shortName} {nextSummit?.location} • {nextSummit?.date}</p>
               </div>
               <div className="flex items-center gap-8">
                  <div className="flex gap-4 font-black text-sm">
