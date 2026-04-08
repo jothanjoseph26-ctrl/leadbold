@@ -185,36 +185,36 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
                 </div>
              </div>
 
-             <div className="space-y-8">
-                {summit.agenda[activeDay].map((sess, i) => {
-                  const sPerson = sess.personnelId ? personnel.find(p => p.id === sess.personnelId) : null;
-                  return (
-                    <div key={i} className="group bg-white border border-[#E5E5E3] p-10 brochure-shadow hover:border-[#050505] transition-all flex flex-col md:flex-row gap-12">
-                       <div className="md:w-32 flex-none"><span className="text-2xl font-black text-[#050505] serif border-b-2 border-[#C9A962]">{sess.time}</span></div>
-                       <div className="flex-1 space-y-6">
-                          <div className="flex flex-col sm:flex-row justify-between gap-6">
-                             <div className="space-y-2">
-                                <h4 className="text-3xl serif font-bold text-[#050505] leading-tight group-hover:text-[#C9A962] transition-colors">{sess.title}</h4>
-                                <p className="text-base text-slate-900 font-light leading-relaxed max-w-xl italic serif">"{sess.description}"</p>
-                             </div>
-                             {(sPerson || sess.speaker) && (
-                               <div className="sm:text-right flex-none">
-                                  <div className="text-[10px] font-black uppercase text-[#C9A962] tracking-[0.3em] mb-3">Faculty / Chair</div>
-                                  <div className="flex items-center sm:justify-end gap-3">
-                                     <div className="text-right">
-                                        <div className="text-sm font-bold text-[#050505]">{sPerson ? sPerson.name : sess.speaker}</div>
-                                        {sPerson && <div className="text-[9px] uppercase font-black text-slate-500">{sPerson.title}</div>}
-                                     </div>
-                                     {sPerson && <img src={sPerson.image} className="w-12 h-12 rounded-full border-2 border-[#0A1628]" />}
-                                  </div>
-                               </div>
-                             )}
-                          </div>
-                       </div>
-                    </div>
-                  );
-                })}
-             </div>
+              <div className="space-y-8">
+                 {(summit.agenda?.[activeDay] || []).map((sess, i) => {
+                   const sPerson = sess.personnelId ? personnel.find(p => p.id === sess.personnelId) : null;
+                   return (
+                     <div key={i} className="group bg-white border border-[#E5E5E3] p-10 brochure-shadow hover:border-[#050505] transition-all flex flex-col md:flex-row gap-12">
+                        <div className="md:w-32 flex-none"><span className="text-2xl font-black text-[#050505] serif border-b-2 border-[#C9A962]">{sess.time}</span></div>
+                        <div className="flex-1 space-y-6">
+                           <div className="flex flex-col sm:flex-row justify-between gap-6">
+                              <div className="space-y-2">
+                                 <h4 className="text-3xl serif font-bold text-[#050505] leading-tight group-hover:text-[#C9A962] transition-colors">{sess.title}</h4>
+                                 <p className="text-base text-slate-900 font-light leading-relaxed max-w-xl italic serif">"{sess.description}"</p>
+                              </div>
+                              {(sPerson || sess.speaker) && (
+                                <div className="sm:text-right flex-none">
+                                   <div className="text-[10px] font-black uppercase text-[#C9A962] tracking-[0.3em] mb-3">Faculty / Chair</div>
+                                   <div className="flex items-center sm:justify-end gap-3">
+                                      <div className="text-right">
+                                         <div className="text-sm font-bold text-[#050505]">{sPerson ? sPerson.name : sess.speaker}</div>
+                                         {sPerson && <div className="text-[9px] uppercase font-black text-slate-500">{sPerson.title}</div>}
+                                      </div>
+                                      {sPerson && <img src={sPerson.image} className="w-12 h-12 rounded-full border-2 border-[#0A1628]" />}
+                                   </div>
+                                </div>
+                              )}
+                           </div>
+                        </div>
+                     </div>
+                   );
+                 })}
+              </div>
           </section>
 
           {/* Outcomes */}

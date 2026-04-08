@@ -50,7 +50,7 @@ export interface Summit {
   whyAttend?: string[];
   contactEmail?: string;
   contactPhone?: string;
-  agenda: {
+  agenda?: {
     day1: AgendaSession[];
     day2: AgendaSession[];
   };
