@@ -1923,6 +1923,43 @@ const DEFAULT_AGENDA = {
 
 export const FLAGSHIP_SUMMITS: Summit[] = [
   {
+    id: 'aogls-2026',
+    shortName: 'AOGLS 2026',
+    title: 'African Oil & Gas Leadership Summit 2026',
+    date: '22nd – 26th June, 2026',
+    isoDate: '2026-06-22',
+    location: 'Accra, Ghana',
+    venue: 'Accra City Hotel, Accra, Ghana',
+    theme: 'Leadership Synergy For Energy Security, Production Optimization, and Operational Excellence In Africa',
+    description: 'Integrating Technical Expertise, Strategic Leadership, and Investment for Sustainable Oil & Gas Development. The premier summit for African oil and gas industry leaders focusing on leadership synergy, energy security, production optimization, and operational excellence.',
+    image: '/company.jpg',
+    capacity: '500 Leaders',
+    attendees: '500+',
+    speakerIds: ['p-1', 'p-2', 'p-3'],
+    price: '$5,500',
+    status: 'Open',
+    whoShouldAttend: ['Government Officials', 'Oil & Gas Executives', 'Senior & Middle Level Managers', 'Investors', 'Technical Professionals', 'Energy Industry Leaders'],
+    outcomes: ['Energy Security Frameworks', 'Production Optimization', 'Operational Excellence', 'Strategic Partnerships', 'Investment Opportunities'],
+    objectives: [
+      'Strengthen energy security frameworks across Africa',
+      'Enhance production optimization and asset performance',
+      'Promote operational excellence across the value chain',
+      'Foster strategic leadership and institutional synergy',
+      'Facilitate investment partnerships and cross-border collaboration',
+      'Advance the application of technical expertise and innovation'
+    ],
+    whyAttend: [
+      'Gain insights from top industry leaders and policy makers',
+      'Acquire cutting-edge strategies to optimize production and operational performance',
+      'Build high-value networks and strategic partnerships',
+      'Identify investment opportunities and funding pathways',
+      'Explore innovative technologies and best practices'
+    ],
+    contactEmail: 'leadbold.aogls.2026@gmail.com',
+    contactPhone: '+234 (0) 803 7243 055',
+    agenda: DEFAULT_AGENDA
+  },
+  {
     id: 'apels-2026',
     shortName: 'APELS 2026',
     title: 'African Political And Economic Leadership Summit',
@@ -1980,43 +2017,6 @@ export const FLAGSHIP_SUMMITS: Summit[] = [
     status: 'Open',
     whoShouldAttend: ['Women Leaders', 'Gender Experts', 'Policy Makers', 'Empowerment Advocates'],
     outcomes: ['Women Empowerment', 'Gender Equality', 'Leadership Development', 'Policy Frameworks'],
-    agenda: DEFAULT_AGENDA
-  },
-  {
-    id: 'aogls-2026',
-    shortName: 'AOGLS 2026',
-    title: 'African Oil & Gas Leadership Summit 2026',
-    date: '22nd – 26th June, 2026',
-    isoDate: '2026-06-22',
-    location: 'Accra, Ghana',
-    venue: 'Accra City Hotel, Accra, Ghana',
-    theme: 'Leadership Synergy For Energy Security, Production Optimization, and Operational Excellence In Africa',
-    description: 'Integrating Technical Expertise, Strategic Leadership, and Investment for Sustainable Oil & Gas Development. The premier summit for African oil and gas industry leaders focusing on leadership synergy, energy security, production optimization, and operational excellence.',
-    image: '/company.jpg',
-    capacity: '500 Leaders',
-    attendees: '500+',
-    speakerIds: ['p-1', 'p-2', 'p-3'],
-    price: '$5,500',
-    status: 'Open',
-    whoShouldAttend: ['Government Officials', 'Oil & Gas Executives', 'Senior & Middle Level Managers', 'Investors', 'Technical Professionals', 'Energy Industry Leaders'],
-    outcomes: ['Energy Security Frameworks', 'Production Optimization', 'Operational Excellence', 'Strategic Partnerships', 'Investment Opportunities'],
-    objectives: [
-      'Strengthen energy security frameworks across Africa',
-      'Enhance production optimization and asset performance',
-      'Promote operational excellence across the value chain',
-      'Foster strategic leadership and institutional synergy',
-      'Facilitate investment partnerships and cross-border collaboration',
-      'Advance the application of technical expertise and innovation'
-    ],
-    whyAttend: [
-      'Gain insights from top industry leaders and policy makers',
-      'Acquire cutting-edge strategies to optimize production and operational performance',
-      'Build high-value networks and strategic partnerships',
-      'Identify investment opportunities and funding pathways',
-      'Explore innovative technologies and best practices'
-    ],
-    contactEmail: 'leadbold.aogls.2026@gmail.com',
-    contactPhone: '+234 (0) 803 7243 055',
     agenda: DEFAULT_AGENDA
   },
   {
