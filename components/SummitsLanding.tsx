@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { Summit } from '../types';
 import { COLORS } from '@/constants';
+import { getSummitRegistrationUrl } from '@/lib/summitLinks';
 
 interface SummitsLandingProps {
   onBack: () => void;
@@ -18,6 +19,7 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
   const [timeLeft, setTimeLeft] = useState({ days: 18, hrs: 14, min: 23, sec: 45 });
   const [showCountdown, setShowCountdown] = useState(true);
   const nextSummit = summits[0];
+  const nextRegistrationUrl = nextSummit ? getSummitRegistrationUrl(nextSummit) : undefined;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -86,7 +88,16 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
                  <div className="flex gap-4 font-black text-sm">
                    <span>{timeLeft.days}D</span> <span>{timeLeft.hrs}H</span> <span>{timeLeft.min}M</span>
                  </div>
-                 <button className="hidden sm:block text-[11px] font-black uppercase underline tracking-widest hover:text-[#0A1628] transition-colors">Register Now →</button>
+                 {nextRegistrationUrl && (
+                   <a
+                     href={nextRegistrationUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="hidden sm:block text-[11px] font-black uppercase underline tracking-widest hover:text-[#0A1628] transition-colors"
+                   >
+                     Register Now →
+                   </a>
+                 )}
               </div>
             </div>
           </div>
@@ -149,7 +160,10 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-             {summits.map(summit => (
+             {summits.map(summit => {
+               const registrationUrl = getSummitRegistrationUrl(summit);
+
+               return (
                <div key={summit.id} className="group bg-[#050505] border border-white/5 overflow-hidden flex flex-col justify-between hover:border-[#C9A962] transition-all hover:-translate-y-2 brochure-shadow">
                   <div className="aspect-[16/10] relative overflow-hidden">
                     <img src={summit.image} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt={summit.title} />
@@ -172,11 +186,23 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
                       </div>
                     </div>
                     <div className="pt-10">
-                       <button onClick={() => onViewSummit(summit)} className="w-full py-4 bg-white/5 text-white text-[10px] font-black uppercase tracking-widest hover:bg-[#C9A962] hover:text-[#050505] transition-all border border-white/10 hover:border-[#C9A962]">Register Interest</button>
+                       {registrationUrl ? (
+                         <a
+                           href={registrationUrl}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="w-full py-4 bg-white/5 text-white text-[10px] font-black uppercase tracking-widest hover:bg-[#C9A962] hover:text-[#050505] transition-all border border-white/10 hover:border-[#C9A962] inline-flex items-center justify-center"
+                         >
+                           Register Interest
+                         </a>
+                       ) : (
+                         <button onClick={() => onViewSummit(summit)} className="w-full py-4 bg-white/5 text-white text-[10px] font-black uppercase tracking-widest hover:bg-[#C9A962] hover:text-[#050505] transition-all border border-white/10 hover:border-[#C9A962]">Register Interest</button>
+                       )}
                     </div>
                   </div>
                </div>
-             ))}
+             );
+             })}
           </div>
         </div>
       </section>
@@ -268,7 +294,16 @@ const SummitsLanding: React.FC<SummitsLandingProps> = ({ onBack, onViewSummit, s
           <p className="text-white/60 text-xl lg:text-2xl font-light max-w-4xl mx-auto leading-relaxed">Join 1,500+ ministers, executives, and change-makers shaping Africa's future at our 2026 summits.</p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-16 border-t border-white/5 max-w-3xl mx-auto">
-            <button className="px-16 py-7 bg-[#C9A962] text-[#050505] font-black uppercase tracking-[0.2em] text-sm brochure-shadow hover:scale-105 transition-all">Register for Next Summit</button>
+            {nextRegistrationUrl && (
+              <a
+                href={nextRegistrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-16 py-7 bg-[#C9A962] text-[#050505] font-black uppercase tracking-[0.2em] text-sm brochure-shadow hover:scale-105 transition-all"
+              >
+                Register for Next Summit
+              </a>
+            )}
             <button className="px-16 py-7 border border-white/20 text-white font-bold uppercase tracking-[0.2em] text-sm hover:bg-white/10 transition-all">Download 2026 Calendar</button>
           </div>
 

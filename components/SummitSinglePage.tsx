@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { Summit, Personnel } from '../types';
 import { COLORS } from '@/constants';
+import { getSummitRegistrationUrl } from '@/lib/summitLinks';
 
 interface SummitSinglePageProps {
   summit: Summit;
@@ -20,6 +21,7 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
   const [timeLeft, setTimeLeft] = useState({ days: 15, hrs: 12, min: 45, sec: 10 });
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  const registrationUrl = getSummitRegistrationUrl(summit);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +59,16 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
               <div className="hidden lg:flex gap-4 text-[10px] font-black uppercase tracking-widest text-[#C9A962]">
                 <span>{timeLeft.days}D</span><span>{timeLeft.hrs}H</span><span>{timeLeft.min}M</span>
               </div>
-              <button className="px-10 py-3 bg-[#0A1628] text-[#C9A962] text-[10px] font-black uppercase tracking-widest brochure-shadow hover:bg-[#C9A962] hover:text-[#050505] transition-all">Secure Credentials</button>
+              {registrationUrl && (
+                <a
+                  href={registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-3 bg-[#0A1628] text-[#C9A962] text-[10px] font-black uppercase tracking-widest brochure-shadow hover:bg-[#C9A962] hover:text-[#050505] transition-all inline-flex items-center gap-3"
+                >
+                  Secure Credentials <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
            </div>
         </div>
       </div>
@@ -127,7 +138,16 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
                   <div className="flex items-center gap-3 text-xs font-black uppercase tracking-widest mb-4 text-[#C9A962]">
                      <ShieldAlert className="w-4 h-4" /> 47 Seats Remaining
                   </div>
-                  <button className="w-full py-4 bg-[#C9A962] text-[#050505] font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all">Secure Your Place →</button>
+                  {registrationUrl && (
+                    <a
+                      href={registrationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-4 bg-[#C9A962] text-[#050505] font-black uppercase text-xs tracking-widest hover:brightness-110 transition-all inline-flex items-center justify-center gap-3"
+                    >
+                      Secure Your Place <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                </div>
             </div>
           </div>
@@ -287,7 +307,16 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
                        <span className="text-3xl font-bold serif text-[#C9A962]">₦150,000</span>
                     </div>
                     <p className="text-[10px] text-[#C9A962]/60 uppercase font-bold mb-4">Ends January 7, 2026</p>
-                    <button className="w-full py-4 bg-[#C9A962] text-[#050505] text-[10px] font-black uppercase tracking-widest hover:brightness-110">Register Early →</button>
+                    {registrationUrl && (
+                      <a
+                        href={registrationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 bg-[#C9A962] text-[#050505] text-[10px] font-black uppercase tracking-widest hover:brightness-110 inline-flex items-center justify-center gap-3"
+                      >
+                        Register Early <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                  </div>
                  <div className="p-10 bg-white/5 border-b border-white/5">
                     <div className="flex justify-between items-start mb-2">
@@ -295,7 +324,16 @@ const SummitSinglePage: React.FC<SummitSinglePageProps> = ({ summit, personnel, 
                        <span className="text-3xl font-bold serif">₦180,000</span>
                     </div>
                     <p className="text-[10px] text-white/40 uppercase font-bold mb-4">After January 7, 2026</p>
-                    <button className="w-full py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-widest hover:bg-white/10">Register Standard</button>
+                    {registrationUrl && (
+                      <a
+                        href={registrationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-widest hover:bg-white/10 inline-flex items-center justify-center gap-3"
+                      >
+                        Register Standard <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
                  </div>
               </div>
 

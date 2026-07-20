@@ -2,6 +2,7 @@ import React from 'react';
 import { MapPin, Users, Calendar, ArrowRight } from 'lucide-react';
 import { FLAGSHIP_SUMMITS } from '@/constants';
 import { Summit } from '@/types';
+import { getSummitRegistrationUrl } from '@/lib/summitLinks';
 
 interface SummitFeatureProps {
   onViewAll?: () => void;
@@ -11,6 +12,7 @@ interface SummitFeatureProps {
 
 const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured, summits = FLAGSHIP_SUMMITS }) => {
   const featured = summits[0];
+  const registrationUrl = getSummitRegistrationUrl(featured);
 
   return (
     <section id="summits" className="py-32 bg-[#FAFAF9]">
@@ -60,12 +62,16 @@ const SummitFeature: React.FC<SummitFeatureProps> = ({ onViewAll, onViewFeatured
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6">
-              <button
-                onClick={() => onViewFeatured?.(featured.id)}
-                className="px-10 py-4 bg-[#D4AF37] text-[#050505] text-xs uppercase tracking-widest font-bold transition-all hover:scale-105"
-              >
-                Register Now
-              </button>
+              {registrationUrl && (
+                <a
+                  href={registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-4 bg-[#D4AF37] text-[#050505] text-xs uppercase tracking-widest font-bold transition-all hover:scale-105"
+                >
+                  Register Now
+                </a>
+              )}
               <button
                 onClick={onViewAll}
                 className="px-10 py-4 border border-[#050505] text-[#050505] text-xs uppercase tracking-widest font-bold transition-all hover:bg-[#050505] hover:text-white"
